@@ -5,7 +5,20 @@ var express         = require('express'),
     bodyParser      = require('body-parser'),
     app             = express(),
     indexRouter     = require('./server/routes/index.js'),
-    ejs             = require("ejs");
+    cityRouter      = require('./server/routes/city.js'),
+    ejs             = require("ejs"),
+    Twitter         = require('twitter');
+
+require('dotenv').config();
+
+// SET UP TWITTER CLIENT
+var client = new Twitter({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_SECRET
+});
+
 
 // connect to db
 // process.env.MONGOLAB_URI is needed for when we deploy to Heroku
@@ -35,7 +48,11 @@ app.use(bodyParser.json());
 // Set static file root folder
 app.use(express.static('client/public'));
 
+
 app.use('/', indexRouter);
+app.get('/city/:name', cityRouter);
+
+
 
 // Listen on port for connections
 // process.env.PORT is needed for when we deploy to Heroku
