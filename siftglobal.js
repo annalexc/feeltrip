@@ -637,9 +637,15 @@ var local = [
   }
 ];
 
+var localByVolume = local[0].trends.sort(function(a, b) {
+    return (b.tweet_volume) - (a.tweet_volume)});
 var globalTrends = [];
 var localTrends = [];
 var limitedTrends = [];
+var localByVolume = local[0].trends.sort(function(a, b) {
+    return (b.tweet_volume) - (a.tweet_volume)});
+
+
 
 function createGlobalTrends(){
   for(var i=0; i<global[0].trends.length; i++){
@@ -648,9 +654,9 @@ function createGlobalTrends(){
 };
 
 function createLocalTrends(){
-  for(var i=0; i<local[0].trends.length; i++){
-    localTrends.push(local[0].trends[i].name);
-    limitedTrends.push(local[0].trends[i].name);
+  for(var i=0; i<localByVolume.length; i++){
+    localTrends.push(localByVolume[i].name);
+    limitedTrends.push(localByVolume[i].name);
   };
 };
 
@@ -670,6 +676,8 @@ function createLimitedTrends(){
   createGlobalTrends();
   createLocalTrends();
   limitTrends();
+  console.log(globalTrends);
+  console.log(localByVolume);
   console.log(limitedTrends);
 };
 createLimitedTrends();
