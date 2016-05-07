@@ -12,7 +12,7 @@ var express = require('express'),
 
 
 router.get('/', function(req, res, next) {
-  res.render("landing");
+  res.render("index");
 });
 
 
