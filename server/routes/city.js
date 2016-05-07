@@ -100,6 +100,10 @@ function getAllTrendsPlace(woeId, res){
           globalTrends = parseTrends(globalTweets, globalResponse, globalTrends);
           console.log("Global trends is:", globalTrends);
           console.log("City trends is:", cityTrends);
+
+          // ******************************************************** //
+          // TEMPORARY VIEW - RENDER THE CITY LOCAL AND GLOBAL TRENDS //
+          // ******************************************************** //
           res.render('city', {globalTrends: globalTrends, cityTrends:cityTrends});
 
         };
