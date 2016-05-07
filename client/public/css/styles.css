@@ -1,14 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Playfair+Display);
 
-*, *:after, *:before { 
-  -webkit-box-sizing: border-box; 
-  -moz-box-sizing: border-box; 
-  box-sizing: border-box; 
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-html, body {  
-  padding: 0; 
+html, body {
+  padding: 0;
   margin: 0;
+  background: beige;
+}
+
+a {
   text-decoration: none;
+  color: black;
 }
 
 .page-wrapper {
@@ -25,7 +30,8 @@ html, body {
   float: left;
   height: 33.33%;
   text-align: center;
-  border: 1px solid white;
+  border: 7px inset white;
+
 }
 
 .city {
@@ -37,7 +43,9 @@ html, body {
   justify-content: center;
 }
 
-@media screen and (max-width: 41.6em) { 
+
+@media screen and (max-width: 41.6em) {
   .menu-box {
     width: 100%;
   }
+
