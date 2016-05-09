@@ -1,0 +1,201 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url(https://fonts.googleapis.com/css?family=Satisfy);
+@import url(https://fonts.googleapis.com/css?family=Sacramento);
+
+body {
+  background-color: white;
+}
+.page-wrapper {
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+.video-container {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-container video {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+}
+.video-container video.fillWidth {
+  width: 100%;
+}
+
+.mint {
+  color: rgb(186,229,214);
+}
+
+#title, p {
+  font-weight: 400;
+  color: white;
+}
+
+#title, p, #message { 
+  font-family:'Playfair Display';
+  margin-bottom: 0; }
+
+#title {
+  font-size: 7rem;
+}
+
+#login, #add-user {
+  font: 1.75rem 'Open Sans Condensed' !important;
+  padding: 8px 30px;
+  margin: 0 auto;
+}
+
+#login-form {
+  width: 340px;
+}
+
+#message{
+  font-size: 1.1rem;
+  height: 25px;
+  margin: 10px auto;
+}
+
+#subtitle, #sign-up-title { 
+  font-family: 'Sacramento';
+}
+
+#subtitle { 
+  font-size: 2.75rem;
+  padding: 0;
+  margin-bottom: 0; }
+
+#sign-up-title {
+  font-size: 5.25rem;
+  line-height: 0.7;
+  text-align: center;
+  z-index: 10;
+  margin-bottom: 0;
+}
+
+#modal-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(198,234,221,0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+#sign-up {
+  border-bottom: 1px dotted rgb(186,229,214);
+  font-weight: bold;
+}
+
+#sign-up:hover{
+  cursor: pointer;
+  color: rgb(148,183,171);
+}
+
+p {
+  padding: 15px 0;
+  font-size: 1.25rem;
+}
+
+div#modal-body{
+  width: 340px;
+  border: 1px solid rgba(255,255,255,0.75);
+  border-radius: 0.25em;
+  padding: 10px 20px 20px;
+}
+
+#first-field {
+  margin-top: 34px;
+}
+
+i.circular.remove.icon {
+  position: absolute;
+  top: -4%;
+  right: -4%;
+  box-shadow: -1px 1px 2px rgba(0,0,0,0.5);
+}
+
+i.circular.remove.icon:hover{
+  cursor: pointer;
+}
+input[type='text'], input[type='password'] {
+  font: 1.4rem 'Open Sans Condensed' !important;
+  text-align: center;
+  padding: 10px !important;
+}
+
+input[type='text']:focus, input[type='password']:focus{
+  border: 1px solid rgb(156,170,163) !important;
+}
+
+#login-form input[type='text'], input[type='password'] {
+  background-color: rgba(255,255,255,0.85) !important;
+}
+
+
+.hidden { display: none; }
+
+
+
+@media all and (max-width:1200px) {
+  .video-container video.fillWidth {
+    height: 100%;
+    width: auto;
+  }
+}
+
+
+@media all and (max-width:630px) {
+
+  .page-wrapper{
+    background-color: transparent;
+  }
+  .video-container video {
+    display: none;
+  }
+  #title {
+    font-size: 4.75rem;
+  }
+
+  #subtitle {
+    font-size: 1.75rem;
+  }
+
+  #login-form{
+    width: 100%;
+  }
+
+  p { 
+    font-size: 1.25rem;
+  }
+
+
+
+  div#modal-body{
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+    border-top: 1px solid rgba(255,255,255,0.75);
+    border-bottom: 1px solid rgba(255,255,255,0.75);
+    padding: 0 0 20px;
+  }
+
+}
+
+
+
