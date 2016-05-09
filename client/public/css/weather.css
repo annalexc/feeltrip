@@ -1,0 +1,13 @@
+html {
+  background: lightblue;
+}
+
+.weather-wrapper {
+  max-width: 480px;
+  margin: auto;
+}
+
+#weather-panel {
+  background: cyan;
+  padding: 5px;
+}
