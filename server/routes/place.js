@@ -94,7 +94,7 @@ function getAllTrendsPlace(woeId, res, placeId){
           // ******************************************************** //
           // TEMPORARY VIEW - RENDER THE local LOCAL AND GLOBAL TRENDS //
           // ******************************************************** //
-          res.render('place', {trends: hashtagTrends});
+          res.render('place', {trends: hashtagTrends, tweets: tweets});
 
         };
       }); 
@@ -119,6 +119,10 @@ function parseTrends(tweets, response, parsedList){
   };
   return parsedList;
 };
+
+function getTrendsLocation(tweets,response,parsedList){
+
+}
 
 
 function createLimitedTrendsArray(globalTrends, localTrends){
