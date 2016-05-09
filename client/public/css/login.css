@@ -1,7 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Playfair+Display);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
-@import url(https://fonts.googleapis.com/css?family=Satisfy);
 @import url(https://fonts.googleapis.com/css?family=Sacramento);
 
 body {
@@ -140,13 +138,17 @@ input[type='text'], input[type='password'] {
 }
 
 input[type='text']:focus, input[type='password']:focus{
-  border: 1px solid rgb(156,170,163) !important;
+  border: 1px solid rgb(111,137,128) !important;
 }
 
-#login-form input[type='text'], input[type='password'] {
+#login-form input[type='text'], #login-form input[type='password'] {
   background-color: rgba(255,255,255,0.85) !important;
 }
 
+#login-form input[type='text']:focus, #login-form input[type='password']:focus{
+  /*border: 1px solid rgb(186,229,214) !important;*/
+  background-color: rgb(186,229,214) !important;
+}
 
 .hidden { display: none; }
 

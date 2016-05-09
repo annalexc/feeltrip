@@ -2,19 +2,19 @@
 <html>
 <head>
   <title>Local Profile</title>
-  <link rel="stylesheet" href="/css/styles.css" >
+  <link rel="stylesheet" href="/css/place.css" >
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="/js/scripts.js" charset="utf-8"></script>
 </head>
 <body>
 <h1>LOCALE LANDING</h1>
 
-<h2>Twitter Data</h2>
-<p>Will be populated below if refresh=true</p>
+<h2>Twitter Data</h2><!-- 
+<p>Will be populated below if refresh=true</p> -->
 
   <h3>Local Trends</h3>
   <% for(var i=0; i < trends.length; i++){ %>
-    <p class="trend"><%= trends[i] %></p>
+    <p class="trend"><%= i+1 %>. <%= trends[i] %></p>
   <% } %>
 
 <hr>

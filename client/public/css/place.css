@@ -1,0 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+  background: rgb(135,135,135);
+  font: 1.25rem 'Open Sans Condensed';
+  text-align: center;
+}

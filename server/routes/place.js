@@ -30,24 +30,28 @@ router.get('/place/:name', function(req, res, next) {
     switch (name) {
       case "sydney": {
         woeId = 1105779;
+        placeId = '0073b76548e5984f';
         break;
       }
       case "newyork": {
         woeId = 2459115;
+        placeId = '27485069891a7938';
+        break;
+      }
+      case "london": {
+        woeId = 44418;
+        placeId = '5de8cffc145c486b';
         break;
       }
     }
   
-    getAllTrendsPlace(woeId,res);
+    getAllTrendsPlace(woeId,res, placeId);
   
   } else {
-    var globalTrends = {
-      name: 'No Global Trends.'
-    }
     var localTrends = {
       name: 'No local Trends.'
     }
-    // console.log("Got here");
+    
     res.render('place', {trends: localTrends});
   }
 
@@ -55,7 +59,7 @@ router.get('/place/:name', function(req, res, next) {
 
 
 // Get city trends from Twitter:
-function getAllTrendsPlace(woeId, res){
+function getAllTrendsPlace(woeId, res, placeId){
   var localParams = {id: woeId};
   var globalParams = {id: 1};
   var localTrends = [];
@@ -74,40 +78,23 @@ function getAllTrendsPlace(woeId, res){
           console.log('globalErr: ', globalErr);
 
         } else {
-    
-
-
-
+  
           var globalTrends = [];
           globalTrends = parseTrends(globalTweets, globalResponse, globalTrends);
-  
 
-          var globalTrendsArray = [];
-          for(var i=0; i<globalTrends.length; i++){
-            globalTrendsArray.push(globalTrends[i].name);
-          };
-
-          var localByVolume = localTrends.sort(function(a, b) {
-            return (b.tweet_volume) - (a.tweet_volume)});
-
-          var localTrendsArray = [];
           var limitedTrends = [];
-          for(var i=0; i<localByVolume.length; i++){
-            localTrendsArray.push(localByVolume[i].name);
-            limitedTrends.push(localByVolume[i].name);
-          };
+          limitedTrends = createLimitedTrendsArray(globalTrends,localTrends);
 
-          limitTrends(localTrendsArray, limitedTrends, globalTrendsArray);
+          var hashtagTrends = [];
+          hashtagTrends = getHashtagTrends(limitedTrends);
 
-
-
-          // console.log(limitedTrends);
-          console.log(globalTrendsArray);
+          getTweets(hashtagTrends, placeId);
+          
 
           // ******************************************************** //
           // TEMPORARY VIEW - RENDER THE local LOCAL AND GLOBAL TRENDS //
           // ******************************************************** //
-          res.render('place', {trends: limitedTrends});
+          res.render('place', {trends: hashtagTrends});
 
         };
       }); 
@@ -123,13 +110,43 @@ function parseTrends(tweets, response, parsedList){
   if(trendsParsed[0]){
     for(var i=0; i < trendsLength; i++){  
       parsedList.push({ 
-        name: trendsParsed[0].trends[i].name, 
+        name: trendsParsed[0].trends[i].name,
+        query: trendsParsed[0].trends[i].query,
         tweet_volume: trendsParsed[0].trends[i].tweet_volume,
         as_of: trendsParsed[0].as_of
       });      
     };
   };
   return parsedList;
+};
+
+
+function createLimitedTrendsArray(globalTrends, localTrends){
+  var globalTrendsArray = [];
+  var localTrendsArray = [];
+  var limitedTrends = [];
+  for(var i=0; i<globalTrends.length; i++){
+    globalTrendsArray.push(globalTrends[i].name);
+  };
+
+  // console.log(globalTrendsArray);
+
+
+  // var localByVolume = localTrends.sort(function(a, b) {
+  //   return (b.tweet_volume) - (a.tweet_volume)});
+
+  // for(var i=0; i<localByVolume.length; i++){
+  //   localTrendsArray.push(localByVolume[i].name);
+  //   limitedTrends.push(localByVolume[i].name);
+  // };
+
+  for(var i=0; i<localTrends.length; i++){
+    localTrendsArray.push(localTrends[i].name);
+    limitedTrends.push(localTrends[i].name);
+  };
+
+  limitTrends(localTrendsArray, limitedTrends, globalTrendsArray);
+  return limitedTrends;
 };
 
 
@@ -142,6 +159,40 @@ function limitTrends(localTrends,limitedTrends,globalTrends){
         limitedTrends.splice(place, 1);
       };
     };
+  };
+};
+
+function getHashtagTrends(trends){
+  var hashtagTrends = [];
+  for(var i = 0; i < trends.length; i++){
+    // Check if trend has a hashtag
+    var trend = trends[i];
+    if(trend.indexOf('#') != -1){
+      hashtagTrends.push(trend);
+    };
+  };
+  return hashtagTrends;
+};
+
+
+function getTweets(trends, placeId){
+  //LIMIT TWEETS TO JUST THE FIRST FIVE TRENDS
+
+  for (var i=0; i<5; i++){
+    queryParams = {
+      q : 'place:'+placeId+trends[i],
+      count: 3,
+      result_type : 'mixed'
+    }
+
+    client.get('search/tweets', queryParams, function(error, tweets, response){
+      if(error){
+        console.log('Err: ', error);
+      } else {
+        console.log(tweets);
+      };
+
+    });
   };
 };
 
