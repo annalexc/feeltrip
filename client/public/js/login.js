@@ -4,7 +4,6 @@ $(function(){
   registerUserHandler();
 });
 
-
 function signUpHandler(){
   var $signUp = $('#sign-up');
   var $signUpForm = $('.sign-up-form');
