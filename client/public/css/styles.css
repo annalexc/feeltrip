@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Playfair+Display);
 
-
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -32,6 +31,7 @@ a {
   height: 33.33%;
   text-align: center;
   border: 7px inset white;
+
 }
 
 .city {
@@ -43,7 +43,9 @@ a {
   justify-content: center;
 }
 
+
 @media screen and (max-width: 41.6em) {
   .menu-box {
     width: 100%;
   }
+

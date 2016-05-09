@@ -5,7 +5,9 @@ var express         = require('express'),
     bodyParser      = require('body-parser'),
     app             = express(),
     indexRouter     = require('./server/routes/index.js'),
-    cityRouter      = require('./server/routes/city.js'),
+    placeRouter     = require('./server/routes/place.js'),
+    apiAuthRouter   = require('./server/routes/api/auth.js'),
+    apiUsersRouter  = require('./server/routes/api/users.js'),
     ejs             = require("ejs"),
     Twitter         = require('twitter');
 
@@ -50,7 +52,9 @@ app.use(express.static('client/public'));
 
 
 app.use('/', indexRouter);
-app.get('/city/:name', cityRouter);
+app.use('/api/auth', apiAuthRouter);
+app.use('/api/users', apiUsersRouter);
+app.get('/place/:name', placeRouter);
 
 
 
