@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="../css/weather.css" media="screen" title="no title" charset="utf-8">
+
+  </head>
+  <body>
+
+    <div class="weather-wrapper">
+      <h1>Weather search page</h1>
+      <search>
+        <form>
+          <input class="searchbar" id="search" placeholder="enter city, country">
+          <input class="button" id="searchbutton" type="submit" value="search">
+        </form>
+      </search>
+
+      <hr>
+
+      <div id="weather-panel">
+        <h1 id="city">@@@id=city</h1>
+        <hr>
+        <h3 id="description">@@@id=description</h3>
+        <h3 id="temperature">@@@id=temperature</h3>
+        <h3 id="humidity">@@@id=humidity</h3>
+        <h3 id="wind">@@@id=wind</h3>
+      </div>
+    </div>  <!-- end of wrapper-->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js'></script>
+    <script src="../js/weather-scripts.js"></script>
+
+  </body>
+</html>
