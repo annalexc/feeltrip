@@ -637,8 +637,7 @@ var local = [
   }
 ];
 
-var localByVolume = local[0].trends.sort(function(a, b) {
-    return (b.tweet_volume) - (a.tweet_volume)});
+
 var globalTrends = [];
 var localTrends = [];
 var limitedTrends = [];
