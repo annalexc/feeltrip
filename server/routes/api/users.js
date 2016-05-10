@@ -24,4 +24,11 @@ usersRouter.get('/', function(req, res, next) {
   });
 });
 
+usersRouter.get('/:id', function(req, res, next) {
+
+  User.find(function( err, dbUsers ){
+    res.json( dbUsers );
+  });
+});
+
 module.exports = usersRouter;

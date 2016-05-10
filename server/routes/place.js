@@ -30,32 +30,59 @@ router.get('/place/:name', function(req, res, next) {
     switch (name) {
       case "sydney": {
         woeId = 1105779;
+        placeId = '0073b76548e5984f';
         break;
       }
-      case "newyork": {
+      case "new-york": {
         woeId = 2459115;
+        placeId = '27485069891a7938';
+        break;
+      }
+      case "london": {
+        woeId = 44418;
+        placeId = '5de8cffc145c486b';
+        break;
+      }
+      case "berlin": {
+        woeId = 638242;
+        placeId = '3078869807f9dd36';
+        break;
+      }
+      case "austin": {
+        woeId = 2357536;
+        placeId = 'c3f37afa9efcf94b';
+        break;
+      }
+      case "new-orleans": {
+        woeId = 2458833;
+        placeId = 'dd3b100831dd1763';
+        break;
+      }
+      case "tel-aviv": {
+        woeId = 1968212;
+        placeId = '2edb6e240797c549';
+        break;
+      }
+      case "san-francisco": {
+        woeId = 2487956;
+        placeId = '5a110d312052166f';
         break;
       }
     }
   
-    getAllTrendsPlace(woeId,res);
+    getAllTrendsPlace(woeId,res, placeId, name);
   
   } else {
-    var globalTrends = {
-      name: 'No Global Trends.'
-    }
-    var localTrends = {
-      name: 'No local Trends.'
-    }
-    // console.log("Got here");
-    res.render('place', {trends: localTrends});
+    var trends = [];
+    var tweets = [];
+    res.render('place', {trends: trends, name: name, tweets: tweets});
   }
 
 });
 
 
 // Get city trends from Twitter:
-function getAllTrendsPlace(woeId, res){
+function getAllTrendsPlace(woeId, res, placeId, name){
   var localParams = {id: woeId};
   var globalParams = {id: 1};
   var localTrends = [];
@@ -74,40 +101,24 @@ function getAllTrendsPlace(woeId, res){
           console.log('globalErr: ', globalErr);
 
         } else {
-    
-
-
-
+  
           var globalTrends = [];
           globalTrends = parseTrends(globalTweets, globalResponse, globalTrends);
-  
 
-          var globalTrendsArray = [];
-          for(var i=0; i<globalTrends.length; i++){
-            globalTrendsArray.push(globalTrends[i].name);
-          };
-
-          var localByVolume = localTrends.sort(function(a, b) {
-            return (b.tweet_volume) - (a.tweet_volume)});
-
-          var localTrendsArray = [];
           var limitedTrends = [];
-          for(var i=0; i<localByVolume.length; i++){
-            localTrendsArray.push(localByVolume[i].name);
-            limitedTrends.push(localByVolume[i].name);
-          };
+          limitedTrends = createLimitedTrendsArray(globalTrends,localTrends);
 
-          limitTrends(localTrendsArray, limitedTrends, globalTrendsArray);
+          var hashtagTrends = [];
+          hashtagTrends = getHashtagTrends(limitedTrends);
 
-
-
-          // console.log(limitedTrends);
-          console.log(globalTrendsArray);
+          var truncatedTweets = [];
+          getTweets(hashtagTrends, placeId, truncatedTweets, hashtagTrends, res, name);
+          // console.log(truncatedTweets);
 
           // ******************************************************** //
           // TEMPORARY VIEW - RENDER THE local LOCAL AND GLOBAL TRENDS //
           // ******************************************************** //
-          res.render('place', {trends: limitedTrends});
+          // res.render('place', {trends: hashtagTrends, name: name});
 
         };
       }); 
@@ -123,13 +134,47 @@ function parseTrends(tweets, response, parsedList){
   if(trendsParsed[0]){
     for(var i=0; i < trendsLength; i++){  
       parsedList.push({ 
-        name: trendsParsed[0].trends[i].name, 
+        name: trendsParsed[0].trends[i].name,
+        query: trendsParsed[0].trends[i].query,
         tweet_volume: trendsParsed[0].trends[i].tweet_volume,
         as_of: trendsParsed[0].as_of
       });      
     };
   };
   return parsedList;
+};
+
+function getTrendsLocation(tweets,response,parsedList){
+
+}
+
+
+function createLimitedTrendsArray(globalTrends, localTrends){
+  var globalTrendsArray = [];
+  var localTrendsArray = [];
+  var limitedTrends = [];
+  for(var i=0; i<globalTrends.length; i++){
+    globalTrendsArray.push(globalTrends[i].name);
+  };
+
+  // console.log(globalTrendsArray);
+
+
+  // var localByVolume = localTrends.sort(function(a, b) {
+  //   return (b.tweet_volume) - (a.tweet_volume)});
+
+  // for(var i=0; i<localByVolume.length; i++){
+  //   localTrendsArray.push(localByVolume[i].name);
+  //   limitedTrends.push(localByVolume[i].name);
+  // };
+
+  for(var i=0; i<localTrends.length; i++){
+    localTrendsArray.push(localTrends[i].name);
+    limitedTrends.push(localTrends[i].name);
+  };
+
+  limitTrends(localTrendsArray, limitedTrends, globalTrendsArray);
+  return limitedTrends;
 };
 
 
@@ -144,6 +189,67 @@ function limitTrends(localTrends,limitedTrends,globalTrends){
     };
   };
 };
+
+function getHashtagTrends(trends){
+  var hashtagTrends = [];
+  var i = 0;
+  count = 0;
+  // Limit to 10 local trends
+  while((count<10)){
+    // Check if trend has a hashtag
+    var trend = trends[i];
+    if(trend.indexOf('#') != -1){
+      hashtagTrends.push(trend);
+      count++;
+    };
+    i++;
+  };
+  return hashtagTrends;
+};
+
+
+function getTweets(trends, placeId, truncatedTweets, hashtagTrends, res, name){
+  //LIMIT TWEETS TO JUST THE FIRST FIVE TRENDS
+    queryParams = {
+      q : 'place:'+placeId+trends.join(' OR '),
+      count: 15,
+      result_type : 'mixed'
+    }
+
+    client.get('search/tweets', queryParams, function(error, tweets, response){
+      if(error){
+        console.log('Err: ', error);
+      } else {
+        truncatedTweets = produceLocalTweets(tweets,truncatedTweets);
+        res.render('place', {trends: hashtagTrends, name: name, tweets: truncatedTweets});
+        // console.log("I get here!");
+      };
+
+    });
+  console.log(queryParams);
+};
+
+
+function produceLocalTweets(tweetsByHash,truncatedTweets){
+  for(var i = 0; i<tweetsByHash.statuses.length; i++){
+    var screenName = tweetsByHash.statuses[i].user.screen_name;
+    var tweetText = tweetsByHash.statuses[i].text;
+    var tweetHashes = [];
+    for(var x = 0; x<tweetsByHash.statuses[i].entities.hashtags.length; x++){
+      var hash = tweetsByHash.statuses[i].entities.hashtags[x].text;
+      tweetHashes.push(hash);
+    };
+    var tweetTime = tweetsByHash.statuses[i].created_at;
+    var tweet = {screen_name: screenName, text: tweetText, hashes: tweetHashes, posted_at: tweetTime};
+    truncatedTweets.push(tweet);
+  };
+  // console.log(truncatedTweets);
+  return truncatedTweets;
+};
+
+
+
+
 
 
 

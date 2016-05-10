@@ -8,7 +8,7 @@
 html, body {
   padding: 0;
   margin: 0;
-  background: beige;
+  background: rgb(135,135,135);
 }
 
 a {
@@ -17,24 +17,24 @@ a {
 }
 
 .page-wrapper {
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
-  background-color: antiquewhite;
+  background-color: transparent;
   overflow: scroll;
 }
 
 .menu-box {
-  font: 3rem 'Playfair Display';
+  font: 3.5rem 'Playfair Display';
   width: 33.33%;
   float: left;
   height: 33.33%;
   text-align: center;
-  border: 7px inset white;
-
+  /*border: 7px inset white;*/
+  border: 1px solid gray;
 }
 
-.city {
+.place {
   position: relative;
   height: 100%;
   width: 100%;
@@ -42,6 +42,98 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+
+
+
+
+
+.link {
+  text-decoration: none;
+  position: relative;
+}
+
+.link-hover {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: black;
+  padding: 0 0 4px;
+}
+
+.link-hover::before,
+.link-hover::after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  z-index: -1;
+  background: black;
+  position: absolute; 
+  transform: scale3d(0,1,1);
+  transition: transform 0.5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  -webkit-transform: scale3d(0,1,1);
+}
+
+.link-hover::before {
+  right: 0;
+  top: 0;
+  transform-origin: 100% 50%;
+  -webkit-transform-origin: 100% 50%;
+}
+
+.link-hover::after {
+  left: 0;
+  bottom: 0;
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+}
+
+.link-hover:hover::before,
+.link-hover:hover::after {
+  -webkit-transform: scale3d(1,1,1);
+  transform: scale3d(1,1,1);
+}
+
+.link-hover span {
+  position: relative;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+
+.link-hover:hover span {
+  color: transparent;
+}
+
+.link-hover span::before,
+.link-hover span::after {
+  position: absolute;
+  color: rgb(186,229,214);
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.link-hover span::before {
+  content: attr(data-letters-l);
+  left: 0;
+  -webkit-transform: translate3d(-5px,0,0);
+  transform: translate3d(-5px,0,0);
+}
+
+.link-hover span::after {
+  content: attr(data-letters-r);
+  right: 0;
+  -webkit-transform: translate3d(5px,0,0);
+  transform: translate3d(5px,0,0);
+}
+
+.link-hover:hover span::before,
+.link-hover:hover span::after {
+  opacity: 1;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
 
 
 @media screen and (max-width: 41.6em) {

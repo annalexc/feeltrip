@@ -4,11 +4,11 @@ console.log('...weather scripts say hi...');
 $(document).ready(function(){
 
 // ------ .env link doesn't work. Need to fix the link and remove key from here
-  var apiKey = '7271d3292aac8f43062a11e66a3aa1b0';
+  var $apiKey = "7271d3292aac8f43062a11e66a3aa1b0";
   // var apiKey = process.env.OPEN_WEATHER_MAP_API_KEY;
 
   var $wrapper = $('.weather-wrapper'),
-    $panel = $wrapper.find('.weather-panel'),
+    $panel = $wrapper.find('#weather-panel'),
     $city = $panel.find('#city'),
     $description = $panel.find('#description'),
     $temperature = $panel.find('#temperature'),
@@ -16,7 +16,56 @@ $(document).ready(function(){
     $wind = $panel.find('#wind'),
     $search = $wrapper.find('#search'),
     $form = $search.find('form'),
-    $button = $form.find('#searchbutton');
+    $button = $('#searchbutton'),
+    $location;
+
+
+  $button.on('click', function(e){
+    e.preventDefault();
+    var $search = $('#search');
+    var location = $search.val();
+    console.log(location);
+    getWeather(location);
+  });
+
+
+  function getWeather(taco) {
+
+    var requestWeather = $.ajax({
+      dataType: 'json',
+      url: 'http://api.openweathermap.org/data/2.5/weather',
+      data: {
+        q: taco,
+        units: 'imperial',
+        appid: $apiKey
+      }
+    });
+
+    requestWeather.done(function(data) {
+
+      console.log(data);
+
+      if (data.cod === '404') {
+        $city.text('city not found');
+      } else {
+
+        console.log($city);
+        $city.text(data.name + ', ' + data.sys.country);
+        $temperature.text(Math.round(data.main.temp));
+        // $description.text(titleCase(data.weather[0].description));
+        $description.text(data.weather[0].description);
+        $humidity.text('Humidity ' + data.main.humidity + '%');
+        $wind.text('Wind: ' + data.wind.speed + ' mph');
+      };
+    });
+
+
+
+
+  }
+
+}); // end of doc ready
+
 
 // ----------AJAX DATA - to remove after selecting the data ---------------
  // http://api.openweathermap.org/data/2.5/weather?q=Stamford&apiKey=7271d3292aac8f43062a11e66a3aa1b0
@@ -62,35 +111,3 @@ $(document).ready(function(){
 //   "cod": 200
 // }
 // ----------end of AJAX data to be removed----------------
-
-
-  function getWeather(input) {
-    var requestWeather = $.ajax({
-      dataType: 'json',
-      url: 'http://api.openweathermap.org/data/2.5/weather',
-      data: {
-        q: input,
-        units: 'imperial',
-        appid: apiKey
-      }
-    });
-
-    getWeather.done(function(data) {
-      if (data.cod === '404') {
-        $city.html('city not found');
-      } else {
-        $city.html(data.name + ', ' + data.sys.country);
-        $temperature.html(Math.round(data.main.temp));
-        $description.html(titleCase(data.weather[0].description));
-        $humidity.html('Humidity ' + data.main.humidity + '%');
-        $wind.html('Wind: ' + data.wind.speed + ' mph');
-      };
-    });
-  }
-
-  $form.submit(function(event){
-    var $input = document.getElementById('search').value;
-  });
-
-
-}); // end of doc ready
