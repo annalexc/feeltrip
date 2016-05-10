@@ -16,15 +16,24 @@ function loginHandler(){
       data: {
         username: $loginForm.find('[name=username]').val(),
         password: $loginForm.find('[name=password]').val()
-      }
-    }).success( function(data) {
-        console.log(data);
+      },
+      success: function(data) {
+        //console.log(data);
 
         Cookies.set('jwt_token', data.token);
         Cookies.set('current_user', data.user);
-       
+        user = Cookies.getJSON("current_user").username;
+        
+        if (Cookies.getJSON("current_user").username){
+          console.log("What up", user);
+          window.location.href = 'main'; 
+        }
         //This is what sets us up as being logged in
- 
+      },
+      error: function(data){
+        var $message = $('#message');
+        $message.text('Invalid login credentials.').addClass('pink');   
+      }
     });
   });
 };
