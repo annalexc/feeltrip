@@ -11,6 +11,7 @@ $(document).ready(function(){
     $panel = $wrapper.find('#weather-panel'),
     $city = $panel.find('#city'),
     $description = $panel.find('#description'),
+    $icon = $panel.find('#weather-icon'),
     $temperature = $panel.find('#temperature'),
     $humidity = $panel.find('#humidity'),
     $wind = $panel.find('#wind'),
@@ -25,7 +26,7 @@ $(document).ready(function(){
     location = hashes[0];
 
     // var location = $("#name").text();
-    console.log(location + " = line 23 location");
+    console.log(location + " = location");
     getWeather(location);
 
   // $button.on('click', function(e){
@@ -57,10 +58,9 @@ $(document).ready(function(){
         $city.text('city not found');
       } else {
 
-        console.log($city + " = $city line 60");
+        console.log($city + " = $city");
         $city.text(data.name + ', ' + data.sys.country);
-        $temperature.text('Temperature: ' + Math.round(data.main.temp) + ' F');
-        // $description.text(titleCase(data.weather[0].description));
+        $temperature.text('Temperature: ' + Math.round(data.main.temp) + ' °F | ' + Math.round((data.main.temp - 32) * (5 / 9)) + ' °C');
         $description.text(data.weather[0].description);
         $humidity.text('Humidity: ' + data.main.humidity + '%');
         $wind.text('Wind: ' + data.wind.speed + ' mph');
@@ -127,45 +127,45 @@ $(document).ready(function(){
 
 // ----------AJAX DATA - to remove after selecting the data ---------------
  // http://api.openweathermap.org/data/2.5/weather?q=Stamford&apiKey=7271d3292aac8f43062a11e66a3aa1b0
-// {
-//   "coord": {
-//     "lon": -73.54,
-//     "lat": 41.05
-//   },
-//   "weather": [
-//     {
-//       "id": 800,
-//       "main": "Clear",
-//       "description": "clear sky",
-//       "icon": "01n"
-//     }
-//   ],
-//   "base": "cmc stations",
-//   "main": {
-//     "temp": 283.199,
-//     "pressure": 1008.12,
-//     "humidity": 52,
-//     "temp_min": 283.199,
-//     "temp_max": 283.199,
-//     "sea_level": 1026.7,
-//     "grnd_level": 1008.12
-//   },
-//   "wind": {
-//     "speed": 3.08,
-//     "deg": 278.006
-//   },
-//   "clouds": {
-//     "all": 0
-//   },
-//   "dt": 1462770525,
-//   "sys": {
-//     "message": 0.0049,
-//     "country": "US",
-//     "sunrise": 1462786901,
-//     "sunset": 1462838405
-//   },
-//   "id": 4843564,
-//   "name": "Stamford",
-//   "cod": 200
-// }
-// ----------end of AJAX data to be removed----------------
+ // {
+ //   "coord": {
+ //     "lon": -74.01,
+ //     "lat": 40.71
+ //   },
+ //   "weather": [
+ //     {
+ //       "id": 804,
+ //       "main": "Clouds",
+ //       "description": "overcast clouds",
+ //       "icon": "04d"
+ //     }
+ //   ],
+ //   "base": "cmc stations",
+ //   "main": {
+ //     "temp": 289.111,
+ //     "pressure": 1022.51,
+ //     "humidity": 33,
+ //     "temp_min": 289.111,
+ //     "temp_max": 289.111,
+ //     "sea_level": 1036.45,
+ //     "grnd_level": 1022.51
+ //   },
+ //   "wind": {
+ //     "speed": 2.24,
+ //     "deg": 253.001
+ //   },
+ //   "clouds": {
+ //     "all": 92
+ //   },
+ //   "dt": 1462917806,
+ //   "sys": {
+ //     "message": 0.0042,
+ //     "country": "US",
+ //     "sunrise": 1462873353,
+ //     "sunset": 1462924971
+ //   },
+ //   "id": 5128581,
+ //   "name": "New York",
+ //   "cod": 200
+ // }
+ // ----------end of AJAX data to be removed----------------
