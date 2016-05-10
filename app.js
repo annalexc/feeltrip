@@ -3,6 +3,7 @@ var express         = require('express'),
     path            = require('path'),
     mongoose        = require('mongoose'),
     bodyParser      = require('body-parser'),
+    cookieParser    = require('cookie-parser'),
     app             = express(),
     indexRouter     = require('./server/routes/index.js'),
     placeRouter     = require('./server/routes/place.js'),
@@ -44,7 +45,7 @@ app.use(bodyParser.json());
 // app.use(flash())
 
 // This is how we read the cookies sent over from the browser
-// app.use(cookieParser());
+app.use(cookieParser());
 
 
 // Set static file root folder

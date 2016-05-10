@@ -15,8 +15,12 @@ router.get('/', function(req, res, next) {
   res.render("index");
 });
 
-router.get('/login', function(req, res, next) {
-  res.render("login");
+router.get('/main', function(req, res, next) {
+  res.render("main");
+});
+
+router.get('/weather', function(req, res, next) {
+  res.render("weather-view");
 });
 
 
