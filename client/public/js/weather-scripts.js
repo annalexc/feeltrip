@@ -19,14 +19,22 @@ $(document).ready(function(){
     $button = $('#searchbutton'),
     $location;
 
+    // Identify the place using the url
+    var location;
+    var hashes = window.location.href.slice(window.location.href.indexOf('place/') + 6).split('?');
+    location = hashes[0];
 
-  $button.on('click', function(e){
-    e.preventDefault();
-    var $search = $('#search');
-    var location = $search.val();
-    console.log(location);
+    // var location = $("#name").text();
+    console.log(location + " = line 23 location");
     getWeather(location);
-  });
+
+  // $button.on('click', function(e){
+  //   e.preventDefault();
+  //   var $search = $('#search');
+  //   var location = $search.val();
+  //   console.log(location + " = location line 27");
+  //   getWeather(location);
+  // });
 
 
   function getWeather(taco) {
@@ -49,12 +57,12 @@ $(document).ready(function(){
         $city.text('city not found');
       } else {
 
-        console.log($city);
+        console.log($city + " = $city line 60");
         $city.text(data.name + ', ' + data.sys.country);
-        $temperature.text(Math.round(data.main.temp));
+        $temperature.text('Temperature: ' + Math.round(data.main.temp) + ' F');
         // $description.text(titleCase(data.weather[0].description));
         $description.text(data.weather[0].description);
-        $humidity.text('Humidity ' + data.main.humidity + '%');
+        $humidity.text('Humidity: ' + data.main.humidity + '%');
         $wind.text('Wind: ' + data.wind.speed + ' mph');
       };
     });
@@ -65,6 +73,56 @@ $(document).ready(function(){
   }
 
 }); // end of doc ready
+
+
+
+//--------------ICONS-----------------
+//
+// switch (data.weather[0].icon) {
+//   case '01d':
+//     $icon.addClass('wi wi-day-sunny');
+//     break;
+//   case '02d':
+//     $icon.addClass('wi wi-day-sunny-overcast');
+//     break;
+//   case '01n':
+//     $icon.addClass('wi wi-night-clear');
+//     break;
+//   case '02n':
+//     $icon.addClass('wi wi-night-partly-cloudy');
+//     break;
+// }
+//
+// switch (data.weather[0].icon.substr(0, 2)) {
+//   case '03':
+//     $icon.addClass('wi wi-cloud');
+//     break;
+//   case '04':
+//     $icon.addClass('wi wi-cloudy');
+//     break;
+//   case '09':
+//     $icon.addClass('wi wi-showers');
+//     break;
+//   case '10':
+//     $icon.addClass('wi wi-rain');
+//     break;
+//   case '11':
+//     $icon.addClass('wi wi-thunderstorm');
+//     break;
+//   case '13':
+//     $icon.addClass('wi wi-snow');
+//     break;
+//   case '50':
+//     $icon.addClass('wi wi-fog');
+//     break;
+// }
+// });
+
+//--------------END OF ICONS--------------------
+
+
+
+
 
 
 // ----------AJAX DATA - to remove after selecting the data ---------------
