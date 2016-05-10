@@ -1,8 +1,32 @@
 $(function(){
+  loginHandler();
   signUpHandler();
   closeModalHander();
   registerUserHandler();
 });
+
+function loginHandler(){
+  var $login = $('#login');
+  var $loginForm = $('#login-form');
+
+  $login.on('click', function(){
+    $.ajax({
+      method: 'post',
+      url: '/api/auth',
+      data: {
+        username: $loginForm.find('[name=username]').val(),
+        password: $loginForm.find('[name=password]').val()
+      }
+    }).success( function(data) {
+        Cookies.set('jwt_token', data.token);
+        //This is what sets us up as being logged in
+ 
+    });
+  });
+};
+
+
+
 
 function signUpHandler(){
   var $signUp = $('#sign-up');
@@ -11,9 +35,7 @@ function signUpHandler(){
 
   $signUp.on('click', function(){ 
     $welcome.fadeOut(500).addClass('hidden');
-    $signUpForm.fadeIn(500, function(){
-      $signUpForm.removeClass('hidden');
-    });
+    $signUpForm.removeClass('hidden').fadeIn(500);
   });
 };
 
