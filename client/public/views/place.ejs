@@ -6,11 +6,11 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.css">
   <link rel="stylesheet" href="/css/styles.css" >
   <link rel="stylesheet" href="/css/place.css" >
-  <link rel="stylesheet" href="../css/weather.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/css/weather.css" >
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="/js/place.js" charset="utf-8"></script>
-  <script src="../js/weather-scripts.js"></script>
+
   <title>FeelTrip</title>
 </head>
 <body>
@@ -65,18 +65,16 @@
       <span class="section-header">Weather</span>
 
       <div class="weather-wrapper">
-        <h1>Weather search page</h1>
-        <search>
+        <br>
+        <!-- <search>
           <form>
-            <input class="searchbar" id="search" placeholder="enter city, country">
+            <input class="searchbar" id="search" placeholder="search another city?">
             <input class="button" id="searchbutton" type="submit" value="search">
           </form>
-        </search>
-
-        <hr>
+        </search> -->
 
         <div id="weather-panel">
-          <h1 id="city"></h1>
+          <h2 id="city"></h2>
           <hr>
           <h3 id="description"></h3>
           <h3 id="temperature"></h3>
@@ -101,6 +99,6 @@
 
 
 
-
+  <script src="../js/weather-scripts.js"></script>
 </body>
 </html>

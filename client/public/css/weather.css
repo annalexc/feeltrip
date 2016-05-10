@@ -5,10 +5,9 @@ html {
 .weather-wrapper {
   max-width: 480px;
   margin: auto;
-  background-color: beige;
 }
 
 #weather-panel {
-  background: cyan;
+  /*background: rgba(186,229,214,0.2);*/
   padding: 5px;
 }
