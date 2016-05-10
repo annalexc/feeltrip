@@ -18,8 +18,11 @@ function loginHandler(){
         password: $loginForm.find('[name=password]').val()
       }
     }).success( function(data) {
-        // Cookies.set('jwt_token', data.token);
-        console.log(data.user);
+        console.log(data);
+
+        Cookies.set('jwt_token', data.token);
+        Cookies.set('current_user', data.user);
+       
         //This is what sets us up as being logged in
  
     });
