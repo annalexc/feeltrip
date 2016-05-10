@@ -2,24 +2,80 @@
 <html>
 <head>
   <title>Local Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.css">
+  <link rel="stylesheet" href="/css/styles.css" >
   <link rel="stylesheet" href="/css/place.css" >
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="/js/scripts.js" charset="utf-8"></script>
+  <script src="/js/place.js" charset="utf-8"></script>
+  <title>FeelTrip</title>
 </head>
 <body>
-<h1>LOCALE LANDING</h1>
 
-<h2>Twitter Data</h2><!-- 
-<p>Will be populated below if refresh=true</p> -->
+<div class="page-wrapper">
+<h1 id="title"><%= name.toUpperCase().replace('-', ' '); %></h1>
+  <div class="ui container">
+  <div class="ui stackable grid">
 
-  <h3>Local Trends</h3>
-  <% for(var i=0; i < trends.length; i++){ %>
-    <p class="trend"><%= i+1 %>. <%= trends[i] %></p>
-  <% } %>
+    <div class="twitter-container ten wide column">
 
-<hr>
-<p>
-  <a href="/">back to index page</a>
-</p>
+
+      <div class="section-header">Trending
+        <a href='/place/<%=name%>?refresh=true' id="refresh"><i class="circular dark-mint refresh icon"></i></a>
+      </div>
+      
+  
+
+        <div class="ui left aligned vertical segment hidden" id="tweets-refreshed">
+          <% tweets.forEach(function(tweet, index){ %>
+          <div class="tweet">
+            <p class="tweet-text"><%= tweet.text; %></p>
+            <p class="screen-name">-@<%= tweet.screen_name; %>, <span class="posted-at"><%= tweet.posted_at %></span></p>
+          </div>
+          <% }); %>
+        </div>
+
+        <div class="ui left aligned vertical segment" id="tweets-saved">
+          <div class="tweet">
+            <p class="tweet-text">Lorem #ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor #incididunt ut labore et dolore #magna aliqua.</p>
+            <p class="screen-name">-@thisisascreenname</p>
+          </div>
+          <div class="tweet">
+            <p class="tweet-text">Lorem #ipsum #dolor sit amet, consectetur adipisicing elit, #sed do eiusmod
+            tempor incididunt ut labore et #dolore magna aliqua.</p>
+            <p class="screen-name">-@thisisascreenname</p>
+          </div>
+          <div class="tweet">
+            <p class="tweet-text">Lorem #ipsum dolor sit amet, consectetur #adipisicing elit, sed do #eiusmod
+            #tempor incididunt #ut labore et dolore magna aliqua.</p>
+            <p class="screen-name">-@thisisascreenname</p>
+          </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="weather-container six wide column">
+      <span class="section-header">Weather</span>
+    </div>
+  
+
+  </div>
+
+
+  <!-- <hr> -->
+  <p>
+    <a href="/">back to index page</a>
+  </p>
+
+</div>
+</div>
+
+
+
+
 </body>
 </html>

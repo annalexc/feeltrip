@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Playfair+Display);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Sacramento);
 
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
@@ -10,6 +12,85 @@ html, body {
   padding: 0;
   margin: 0;
   background: rgb(135,135,135);
-  font: 1.25rem 'Open Sans Condensed';
   text-align: center;
+  font-size: 1.1rem;
+  color: rgb(195,195,195);
+}
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: auto;
+}
+
+.mint {
+  color: rgb(186,229,214);
+}
+
+.dark-mint {
+  color: rgb(130,208,181);
+}
+.page-wrapper {
+  background-color: rgba(0,0,0,0.7);
+}
+
+.section-header{
+  font: 3rem 'Sacramento';
+  line-height: 1;
+  margin-bottom: 10px;
+}
+#title{
+  font: 3rem 'Playfair Display';
+  margin-top: 20px;
+}
+a {
+  color: white;
+}
+a#refresh {
+  font-size: 1rem;
+}
+
+a.hashtag, a.screen-name {
+  font-weight: bold;
+  font-size: 1.22rem;
+  letter-spacing: 1.8px;
+  text-shadow: -1px 1px 1px black;
+}
+
+a.hashtag:hover, a.screen-name:hover {
+  color: rgb(104,166,144);
+}
+
+#tweets-refresh {
+  font: 1rem 'Lora';
+}
+
+.tweet {
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  margin-bottom: 15px;
+  transition: all 0.5s ease;
+}
+.tweet-text {
+  font: 1.15rem 'Playfair Display';
+  padding: 0;
+  margin: 0;
+}
+
+p.screen-name {
+  font: 0.8rem 'Montserrat';
+  padding: 5px 0 15px;
+}
+
+a.screen-name {
+  font-size: 0.85rem;
+}
+
+i.circular.dark-mint.refresh.icon {
+  background-color: rgb(130,208,181) !important;
+  color: black;
+}
+
+.hidden {
+  display: none !important;
 }
