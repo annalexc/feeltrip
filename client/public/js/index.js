@@ -32,7 +32,7 @@ function loginHandler(){
       },
       error: function(data){
         var $message = $('#message');
-        $message.text('Invalid login credentials.').addClass('pink');   
+        $message.text('Invalid login credentials. Please try again.').addClass('pink');   
       }
     });
   });

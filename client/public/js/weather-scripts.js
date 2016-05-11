@@ -25,7 +25,7 @@ $(document).ready(function(){
     location = hashes[0];
 
     // var location = $("#name").text();
-    console.log(location + " = line 23 location");
+    // console.log(location + " = line 23 location");
     getWeather(location);
 
   // $button.on('click', function(e){
