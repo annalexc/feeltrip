@@ -8,7 +8,10 @@
 html, body {
   padding: 0;
   margin: 0;
-  background: rgb(135,135,135);
+}
+
+body {
+  background-color: rgb(135,135,135);
 }
 
 a {
@@ -24,6 +27,8 @@ a {
   overflow: scroll;
 }
 
+
+
 .menu-box {
   font: 3.5rem 'Playfair Display';
   width: 33.33%;
@@ -31,7 +36,7 @@ a {
   height: 33.33%;
   text-align: center;
   /*border: 7px inset white;*/
-  border: 1px solid gray;
+  border: 0.5px solid rgba(0,0,0,0.15);
 }
 
 .place {
@@ -42,11 +47,6 @@ a {
   align-items: center;
   justify-content: center;
 }
-
-
-
-
-
 
 .link {
   text-decoration: none;
@@ -107,7 +107,8 @@ a {
 .link-hover span::before,
 .link-hover span::after {
   position: absolute;
-  color: rgb(186,229,214);
+  color: rgb(130,208,181);
+  text-shadow: -1px 1px 1px rgba(0,0,0,0.65);
   opacity: 0;
   -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
   transition: transform 0.5s, opacity 0.5s;
@@ -133,7 +134,6 @@ a {
   -webkit-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0);
 }
-
 
 
 @media screen and (max-width: 41.6em) {
