@@ -1,0 +1,12 @@
+body {
+  background: url('http://www.clickinmoms.com/blog/wp-content/uploads/2015/04/girl-looking-out-a-window-by-Kristy-Dooley-1050x700.jpg') no-repeat fixed;
+  background-size: cover;
+  background-color: transparent;
+}
+.hidden {
+  display: none;
+}
+
+.page-wrapper{
+  background-color: rgba(255,255,255,.3);
+}

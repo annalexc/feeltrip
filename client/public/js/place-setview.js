@@ -3,14 +3,13 @@ $(function(){
  refreshHandler();
  findHashTags();
  findScreenNames();
-
 });
 
 function setBodyBackground(){
   var place;
   var hashes = window.location.href.slice(window.location.href.indexOf('place/') + 6).split('?');
   place = hashes[0];
-  console.log(place);
+  // console.log(place);
   $('body').css('background-image', 'url(/images/' + place +'.jpg)');
 };
 
