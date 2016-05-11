@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Snapshot = require('../../../models/snapshot');
+var Snapshot = require('../../models/snapshot');
 
 
 // GET SINGLE RESOURCE
@@ -15,13 +15,14 @@ router.get('/:id', function(req, res, next){
     }
   })
 });
+
 // GET ALL SNAPSHOTS
 router.get('/', function(req, res, next){
   Snapshot.find({}).sort({createdAt: -1}).exec(function(err, snapshotData){
     if (err) {
       res.status(404).end();
     }else {
-      res.json(snapshot: snapshotData)
+      res.json( snapshotData );
     }
   });
 });

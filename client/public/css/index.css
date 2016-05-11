@@ -38,6 +38,10 @@ body {
   color: rgb(186,229,214);
 }
 
+.dark-mint {
+  color: rgb(130,208,181);
+}
+
 #title, p {
   font-weight: 400;
   color: white;

@@ -7,6 +7,7 @@ var express         = require('express'),
     app             = express(),
     indexRouter     = require('./server/routes/index.js'),
     placeRouter     = require('./server/routes/place.js'),
+    snapshotRouter  = require('./server/routes/api/snapshots.js'),
     apiAuthRouter   = require('./server/routes/api/auth.js'),
     apiUsersRouter  = require('./server/routes/api/users.js'),
     ejs             = require("ejs"),
@@ -25,7 +26,7 @@ var client = new Twitter({
 
 // connect to db
 // process.env.MONGOLAB_URI is needed for when we deploy to Heroku
-mongoose.connect( process.env.MONGOLAB_URI || "mongodb://localhost/feeltrip" );
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/feeltrip" );
 
 // log requests to STDOUT
 app.use(morgan('dev'));
@@ -55,6 +56,7 @@ app.use(express.static('client/public'));
 app.use('/', indexRouter);
 app.use('/api/auth', apiAuthRouter);
 app.use('/api/users', apiUsersRouter);
+app.use('/api/snapshots', snapshotRouter);
 app.get('/place/:name', placeRouter);
 
 

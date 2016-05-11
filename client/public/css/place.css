@@ -24,6 +24,12 @@ body {
   overflow: auto;
 }
 
+nav {
+  position: fixed;
+  top: 3%;
+  right: 3%;
+}
+
 .mint {
   color: rgb(186,229,214);
 }
@@ -40,15 +46,12 @@ body {
   line-height: 1;
   margin-bottom: 10px;
 }
-#title{
+#place{
   font: 3rem 'Playfair Display';
   margin-top: 20px;
 }
 a {
   color: white;
-}
-a#refresh {
-  font-size: 1rem;
 }
 
 a.hashtag, a.screen-name {
@@ -77,8 +80,11 @@ a.hashtag:hover, a.screen-name:hover {
   margin: 0;
 }
 
-p.screen-name {
+span.screen-name, span.posted-at, span {
   font: 0.8rem 'Montserrat';
+  /*padding: 5px 0 15px;*/
+}
+p.info {
   padding: 5px 0 15px;
 }
 
@@ -86,11 +92,25 @@ a.screen-name {
   font-size: 0.85rem;
 }
 
-i.circular.dark-mint.refresh.icon {
+i.circular.dark-mint.icon {
   background-color: rgb(130,208,181) !important;
   color: black;
+}
+i.circular.dark-mint.icon:hover {
+  cursor: pointer;
+  background-color: rgb(104,166,144) !important;
 }
 
 .hidden {
   display: none !important;
 }
+
+
+@media all and (max-width:630px) {
+  i.circular.dark-mint.icon {
+  margin: 2px;
+}
+  nav{
+    display: flex;
+    flex-direction: column;
+  }
