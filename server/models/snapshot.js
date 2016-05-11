@@ -2,9 +2,10 @@ var mongoose = require('mongoose');
 
 
 var snapshotSchema = mongoose.Schema({
-  tweet_data: { type: String, required: true },
   user_name: { type: String, required: true },
-  weather_data: { type: String, required: true },
+  tweet_data: { type: Array, required: true },
+  weather_data: { type: Object, required: true },
+  location: {type: String}
   }, { timestamps: true });
 
 module.exports = mongoose.model('Snapshot', snapshotSchema);
