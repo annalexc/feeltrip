@@ -117,7 +117,7 @@ var $wrapper2 = $('.weather-wrapper2'),
     if (location == "tel-aviv") {
     latitude = -90.071532;
     longitude = 34.781768;
-  };
+    };
     if (location == "san-francisco") {
       latitude = 34.781768;
       longitude = -122.419416;
@@ -127,13 +127,14 @@ var $wrapper2 = $('.weather-wrapper2'),
       longitude = 52.520007;
     };
 
-  var $forecastIoApiKey = process.env.FORECAST_API_KEY;
+
+  var $forecastIoApiKey = '6f7df3b994c4d8618a70f65fab6c2eaa';
 
   console.log(location + " = location / " + latitude + '= latitude / ' + longitude + '= longitude');
 
   getForecastIoWeather(latitude, longitude);
 
-
+  //
   // https://api.forecast.io/forecast/APIKEY/LATITUDE,LONGITUDE
   // New York: === https://api.forecast.io/forecast/6f7df3b994c4d8618a70f65fab6c2eaa/40.712784,-74.005941
 
@@ -141,19 +142,13 @@ var $wrapper2 = $('.weather-wrapper2'),
   function getForecastIoWeather(latitude, longitude) {
 
     var requestWeather2 = $.ajax({
-      dataType: 'json',
-      url: 'https://api.forecast.io/forecast/'+ $forecastIoApiKey + '/' + latitude + ',' + longitude + '&callback=?',
-      data: {
-        // LATITUDE: $latitude,
-        // LONGITUDE: $longitude,
-        // APIKEY: $forecastIoApiKey
-      }
-    });
-
-//----------the second way for jsonp, also doesn't work:
-    // $.getJSON('https://api.forecast.io/forecast/'+ $forecastIoApiKey + '/' + latitude + ',' + longitude + '&callback=?', function(recs){
-    //   console.log(recs);
-    // })
+    url:'https://api.forecast.io/forecast/6f7df3b994c4d8618a70f65fab6c2eaa/40.712784,-74.005941',
+    type: "GET",
+    dataType: 'jsonp',
+    success: function(res){
+      console.log(res);
+    }
+  })
 
     requestWeather2.done(function(data) {
 
@@ -167,7 +162,7 @@ var $wrapper2 = $('.weather-wrapper2'),
         $city2.text(location);
         $temperature2.text('Temperature: ' + Math.round(data.currently.temperature) + ' °F | ' + Math.round((data.currently.temperature - 32) * (5 / 9)) + ' °C');
         $description2.text(data.currently.summary);
-        $humidity2.text('Humidity: ' + data.currently.humidity + '%');
+        $humidity2.text('Humidity: ' + (data.currently.humidity)*100 + '%');
         $wind2.text('Wind: ' + data.currently.windSpeed + ' mph');
       };
     });
