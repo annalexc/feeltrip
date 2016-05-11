@@ -28,16 +28,17 @@
       <div class="section-header">Trending</div>
 
         <!-- Tweets pulled from Twitter -->
-        <div class="ui left aligned vertical segment hidden" id="tweets-refreshed">
+      <div class="hidden" id="tweets-refreshed">
+        <div class="ui left aligned vertical segment">
           <% tweets.forEach(function(tweet, index){ %>
           <div class="tweet">
             <p class="tweet-text"><%= tweet.text; %></p>
             <p class="info">-<span class="screen-name">@<%= tweet.screen_name; %></span><span>, </span><span class="posted-at"><%= tweet.posted_at %></span></p>
           </div>
           <% }); %>
-         
       
         </div>
+      </div>
 
         <!-- Tweets rendered from database -->
         <div class="ui left aligned vertical segment" id="tweets-saved">
