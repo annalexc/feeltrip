@@ -26,7 +26,7 @@ var client = new Twitter({
 
 // connect to db
 // process.env.MONGOLAB_URI is needed for when we deploy to Heroku
-mongoose.connect( process.env.MONGOLAB_URI || "mongodb://localhost/feeltrip" );
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/feeltrip" );
 
 // log requests to STDOUT
 app.use(morgan('dev'));
