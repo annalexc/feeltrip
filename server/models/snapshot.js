@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 
+
 var SnapshotSchema = mongoose.Schema({
   username: { type: String, required: true },
   userID: { type: String, required: true },
