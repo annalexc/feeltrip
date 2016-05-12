@@ -31,6 +31,16 @@ nav {
   right: 3%;
 }
 
+nav#sub-nav {
+  position: fixed;
+  top: 10%;
+  right: 4%;
+}
+
+nav#sub-nav span{
+  font: 1.15rem 'Open Sans Condensed';
+}
+
 .mint {
   color: rgb(186,229,214);
 }
@@ -47,6 +57,7 @@ nav {
   line-height: 1;
   margin-bottom: 10px;
 }
+
 #place{
   font: 3.25rem 'Playfair Display';
   margin: 20px auto 0;
