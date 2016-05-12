@@ -2,6 +2,7 @@ $(function(){
  setBodyBackground();
  refreshHandler();
  displayMenuItemDesc();
+ animateHamburger();
  findHashTags();
  findScreenNames();
 });
@@ -56,15 +57,20 @@ function addLinkToScreenNames(text){
   screen_name_regexp = /@([a-zA-Z0-9_]+)/g;
   return text.replace(
     screen_name_regexp,
-      '<a class="dark-mint screen-name" target="_blank" href="http://twitter.com/$1">@$1</a>'
+      '<a class="dark-mint name" target="_blank" href="http://twitter.com/$1">@$1</a>'
   );
 };
 
 function displayMenuItemDesc(){
+  var $home = $('#home');
   var $refresh = $('#refresh');
   var $save = $('#save');
   var $logout = $('.logout');
   var $navDesc = $('#nav-desc');
+  $home.hover(
+    function(){$navDesc.text('Go Home');}, function(){$navDesc.text('');}
+  );
+  
   $refresh.hover(
     function(){$navDesc.text('Refresh Data');}, function(){$navDesc.text('');}
   );
@@ -76,4 +82,15 @@ function displayMenuItemDesc(){
   $logout.hover(
     function(){$navDesc.text('Log Out');}, function(){$navDesc.text('');}
   );
+};
+
+
+function animateHamburger(){
+  // toggles the open class on the hamburger when clicked
+  var $hamburgerButton = $('#hamburger-button');
+  var $mainMenu = $('#main-menu');
+  $hamburgerButton.on('click', function(e){
+    $(this).toggleClass('open');
+    $mainMenu.toggleClass('open');
+  });
 };
