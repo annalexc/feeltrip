@@ -1,7 +1,9 @@
 console.log("Yo");
 
 
-var renderSnapshots = function(snapshotData){
+var renderSnapshots = function(snapshotData, callback1, callback2){
+  callback1 = callback1 || function(){};
+  callback2 = callback2 || function(){};
   console.log("Snapshot Data in Render Snapshots is", snapshotData);
   var $location = $('#place').text();
   var $tweetsSaved = $('#tweets-saved');
@@ -27,6 +29,8 @@ var renderSnapshots = function(snapshotData){
       };
     };
   };
+  callback1();
+  callback2();
 };
 
 function renderSaved(){
@@ -38,13 +42,45 @@ function renderSaved(){
     //data.forEach( renderSnapshots );
     // renderSnapshots(snapShotData);
     console.log("Snapshot Data is:", snapshotData);
-    renderSnapshots(snapshotData);
+    renderSnapshots(snapshotData, findHashTags, findScreenNames);
     }
   });
 };
 
+
+// Find all hashtags in place page and replace them with links
+hashtag_regexp = /#([a-zA-Z0-9]+)/g;
+
+function findHashTags(){
+  $('.tweet-text').each(function() {
+    $(this).html(addLinkToHashtags($(this).html()));
+  });
+};
+
+function findScreenNames(){
+  $('.screen-name').each(function() {
+    $(this).html(addLinkToScreenNames($(this).html()));
+  });
+};
+
+function addLinkToHashtags(text){
+  hashtag_regexp = /#([a-zA-Z0-9]+)/g;
+  console.log("I get here");
+  return text.replace(
+    hashtag_regexp,
+      '<a class="dark-mint hashtag" target="_blank" href="http://twitter.com/search?q=%23$1">#$1</a>'
+  );
+};
+
+function addLinkToScreenNames(text){
+  screen_name_regexp = /@([a-zA-Z0-9_]+)/g;
+  return text.replace(
+    screen_name_regexp,
+      '<a class="dark-mint name" target="_blank" href="http://twitter.com/$1">@$1</a>'
+  );
+};
+
 $( document ).ready(function() {
-    renderSaved();
+  renderSaved();
 });
 
-//renderSaved();
