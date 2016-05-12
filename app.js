@@ -4,7 +4,6 @@ var express         = require('express'),
     mongoose        = require('mongoose'),
     bodyParser      = require('body-parser'),
     cookieParser    = require('cookie-parser'),
-    moment          = require('moment-timezone'),
     app             = express(),
     indexRouter     = require('./server/routes/index.js'),
     placeRouter     = require('./server/routes/place.js'),
@@ -23,8 +22,6 @@ var client = new Twitter({
   access_token_key: process.env.TWITTER_ACCESS_KEY,
   access_token_secret: process.env.TWITTER_ACCESS_SECRET
 });
-
-moment().tz("America/Los_Angeles").format();
 
 // connect to db
 // process.env.MONGOLAB_URI is needed for when we deploy to Heroku
