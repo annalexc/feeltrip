@@ -1,4 +1,4 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/1.3.2/css/weather-icons.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css);
 
 
 html {
@@ -13,4 +13,12 @@ html {
 #weather-panel {
   /*background: rgba(186,229,214,0.2);*/
   padding: 5px;
+}
+
+#weather-icon {
+  font-size: 5em;
+}
+
+#temperature {
+  font-size: 2em;
 }
