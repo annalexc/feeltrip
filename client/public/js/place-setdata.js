@@ -37,7 +37,7 @@ function setSaveSnapShotHandler(){
       location: $location
     };
     console.log(snapShotData);
-    //saveSnapShot(snapShotData, $location);
+    saveSnapShot(snapShotData, $location);
   });
 };
 
@@ -48,6 +48,7 @@ function saveSnapShot(snapShotData, location){
     url: '/api/snapshots',
     data: { snapshot: snapShotData },
     success: function(data){
+      console.log("I get here");
       console.log(data);
       window.location.href = location; 
     }
