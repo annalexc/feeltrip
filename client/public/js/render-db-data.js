@@ -174,7 +174,6 @@ function parseTimeStamp(rawTimeStamp){
 
 
 
-
 var renderSnapshots = function(snapshotData, callback1, callback2){
   callback1 = callback1 || function(){};
   callback2 = callback2 || function(){};
