@@ -4,7 +4,7 @@ var express         = require('express'),
     mongoose        = require('mongoose'),
     bodyParser      = require('body-parser'),
     cookieParser    = require('cookie-parser'),
-    momentjs        = require('moment'),
+    moment          = require('moment-timezone'),
     app             = express(),
     indexRouter     = require('./server/routes/index.js'),
     placeRouter     = require('./server/routes/place.js'),
@@ -52,7 +52,6 @@ app.use(cookieParser());
 
 // Set static file root folder
 app.use(express.static('client/public'));
-
 
 app.use('/', indexRouter);
 app.use('/api/auth', apiAuthRouter);
