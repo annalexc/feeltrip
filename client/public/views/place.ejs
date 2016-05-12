@@ -26,10 +26,11 @@
     <div class="twitter-container ten wide column">
 
       <!-- Twitter Trends Section -->
-      <div class="section-header">Trending</div>
+      
 
-        <!-- Tweets pulled from Twitter -->
+      <!-- Tweets pulled from Twitter -->
       <div class="hidden" id="tweets-refreshed">
+        <div class="section-header">Current Trends</div>
         <div class="ui left aligned vertical segment">
           <% tweets.forEach(function(tweet, index){ %>
           <div class="tweet">
@@ -42,6 +43,7 @@
 
         <!-- Tweets rendered from database -->
         <div class="ui left aligned vertical segment" id="tweets-saved">
+        <div class="section-header">Saved Trends</div>
           <div class="tweet">
             <p class="tweet-text">Lorem #ipsum dolor sit amet, consectetur #adipisicing elit, sed do #eiusmod
             #tempor incididunt #ut labore et dolore magna aliqua.
@@ -64,47 +66,40 @@
 
     <!-- Weather Section -->
 
-    <div class="weather-container six wide column">
-      <span class="section-header">Weather</span>
+   <div class="weather-container six wide column">
+     <span class="section-header">Weather</span>
 
-      <div class="weather-wrapper">
-        <br>
-        <!-- <search>
-          <form>
-            <input class="searchbar" id="search" placeholder="search another city?">
-            <input class="button" id="searchbutton" type="submit" value="search">
-          </form>
-        </search> -->
+     <div class="weather-wrapper">
+       <br>
 
-        <div id="weather-panel">
-          <h2 id="city"></h2>
-          <hr>
-          <h2 id="weather-icon"></h2>
-          <h3 id="description"></h3>
-          <h3 id="temperature"></h3>
-          <h3 id="humidity"></h3>
-          <h3 id="wind"></h3>
-        </div>
-      </div>  <!-- end of wrapper-->
+       <div id="weather-panel">
+         <!-- <h2 id="city"></h2> -->
+         <h3 id="temperature"></h3>
+         <h2 id="weather-icon"></h2>
+         <h3 id="description"></h3>
+         <h3 id="humidity"></h3>
+         <h3 id="wind"></h3>
+       </div>
+     </div>  <!-- end of wrapper-->
 
 
-      <!--2nd weather module - data from forecast.io-->
+     <!--2nd weather module - data from forecast.io-->
+     <!-- <div class="weather-wrapper2">
+       <br>
+       <hr>
+       <div id="weather-panel2">
+         <h2 id="city2"></h2>
+         <h3 id="weather-icon2"></h3>
+         <h3 id="description2"></h3>
+         <h3 id="temperature2"></h3>
+         <h3 id="humidity2"></h3>
+         <h3 id="wind2"></h3>
+       </div>
+     </div>   -->
+     <!-- end of wrapper2-->
 
-      <div class="weather-wrapper2">
-        <br>
-        <div id="weather-panel2">
-          <h2 id="city2"></h2>
-          <hr>
-          <h3 id="weather-icon2"></h3>
-          <h3 id="description2"></h3>
-          <h3 id="temperature2"></h3>
-          <h3 id="humidity2"></h3>
-          <h3 id="wind2"></h3>
-        </div>
-      </div>  <!-- end of wrapper2-->
 
-
-    </div> <!--end of weather-container-->
+   </div> <!--end of weather-container-->
 
   </div> <!-- End of stackable grid -->
 
