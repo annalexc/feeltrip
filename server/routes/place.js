@@ -116,8 +116,10 @@ function getAllTrendsPlace(woeId, res, placeId, name){
           var limitedTrends = [];
           limitedTrends = createLimitedTrendsArray(globalTrends,localTrends);
 
+          
           var hashtagTrends = [];
-          setTimeout(getHashtagTrends(limitedTrends,hashtagTrends), 250);
+          getHashtagTrends(limitedTrends,hashtagTrends);
+          console.log(hashtagTrends);
 
           var truncatedTweets = [];
           setTimeout(getTweets(hashtagTrends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, res, name), 500);
@@ -182,6 +184,7 @@ function createLimitedTrendsArray(globalTrends, localTrends){
   };
 
   limitTrends(localTrendsArray, limitedTrends, globalTrendsArray);
+  //console.log(185,limitedTrends);
   return limitedTrends;
 };
 
@@ -200,11 +203,17 @@ function limitTrends(localTrends,limitedTrends,globalTrends){
 
 function getHashtagTrends(trends, hashtagTrends){
   var i = 0;
-  count = 0;
+  var count = 0;
   // Limit to 10 local trends
   while((count<15)){
+    //console.log(211,i);
     // Check if trend has a hashtag
     var trend = trends[i];
+
+    if(!trend){
+      break;
+    }
+
     if(trend.indexOf('#') != -1){
       hashtagTrends.push(trend);
       count++;
@@ -237,7 +246,7 @@ function getTweets(trends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, 
       };
 
     });
-  console.log(queryParams);
+  //console.log(queryParams);
 };
 
 
@@ -270,7 +279,7 @@ function getCurrentDateTime() {
   var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
   time = hours + ":" + minutes + " " + am_pm;
   var datetime = "Data Refreshed: " + d + "  " + time;  
-  console.log(datetime);
+  //console.log(datetime);
   return datetime;
 
     };

@@ -43,12 +43,12 @@ nav#main-menu.open {
 
 nav#sub-nav {
   position: fixed;
-  top: 10%;
+  top: 11%;
   right: 4%;
 }
 
 nav#sub-nav span{
-  font: 1.15rem 'Open Sans Condensed';
+  font: 1.2rem 'Open Sans Condensed';
 }
 
 .mint {
