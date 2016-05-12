@@ -15,11 +15,15 @@ function setBodyBackground(){
 
 function refreshHandler(){
   var $tweetsRefreshed = $('#tweets-refreshed');
+  var $save = $('#save');
+  var $disabledSave = $('#disabled-save');
   var hashes = window.location.href.slice(window.location.href.indexOf('place/') + 6).split('?');
   if(hashes[1]){
-    $tweetsRefreshed.fadeIn(500, function(){
+    // $tweetsRefreshed.fadeIn(500, function(){
       $tweetsRefreshed.removeClass('hidden');
-    });
+      $disabledSave.addClass('hidden');
+      $save.removeClass('hidden');
+    // });
   };
 };
 

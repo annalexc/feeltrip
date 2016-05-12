@@ -108,6 +108,10 @@ i.circular.dark-mint.icon:hover {
   background-color: rgb(104,166,144) !important;
 }
 
+i.circular.dark-gray.icon {
+  background-color: rgb(255,255,255) !important;
+}
+
 .hidden {
   display: none !important;
 }
