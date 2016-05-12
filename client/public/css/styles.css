@@ -136,8 +136,17 @@ a {
 }
 
 
+@media screen and (max-width: 60em) {
+  .menu-box {
+    font-size: 2.85rem;
+  }
+}
+
 @media screen and (max-width: 41.6em) {
   .menu-box {
     width: 100%;
+    height: 20%;
+    font-size: 2.75rem;
   }
+}
 
