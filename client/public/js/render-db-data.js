@@ -160,15 +160,18 @@ function parseTimeStamp(rawTimeStamp){
   };
   var minute = rawTimeStamp.charAt(14)+rawTimeStamp.charAt(15);
   var amPm;
+
   function genAmPm(){
-    if((parseInt(hourRaw)+parseInt(minute))<'1200'){
+    console.log(hour);
+    if(parseInt(hourRaw)<12){
+
       amPm = 'am';
     } else{
       amPm = 'pm';
     }
   };
   genAmPm();
-  var timeStamp = 'Saved: '+ hour + ':' + minute + amPm + ', ' + month + ' ' + day + ', '+ year;
+  var timeStamp = 'Saved on ' + month + ' ' + day + ', ' + year + ' at ' + hour + ':' + minute + amPm;
   return timeStamp;
 };
 
@@ -184,6 +187,7 @@ var renderSnapshots = function(snapshotData, callback1, callback2){
   for(var i = 0; i<snapshotData.length; i++){
     if($location == snapshotData[i].location){
       var savedTime = parseTimeStamp(snapshotData[i].createdAt);
+      console.log(snapshotData[i].createdAt);
       $tweetsSaved.append($('<div>').addClass('saved-time').text(savedTime));
       var tweet = snapshotData[i].tweet_data;
       for(var x = 0; x< snapshotData[i].tweet_data.length; x++){
