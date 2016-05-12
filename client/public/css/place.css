@@ -21,6 +21,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center;
   overflow: auto;
 }
 
@@ -142,9 +143,9 @@ i.circular.dark-gray.icon {
 #hamburger-button {
   display: inline-block;
   vertical-align: middle;
-  height: 15px;
+  height: 100%;
   width: 45px;
-  margin-right: 40px;
+  margin-right: 45px;
   -webkit-transition: all 0.5s ease;
    -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
@@ -170,16 +171,16 @@ i.circular.dark-gray.icon {
 }
 
 #hamburger-button.open {
-  margin-right: -5px;
+  margin-right: -3px;
 }
 
 
 #hamburger-button.open span:nth-child(1) {
-  -webkit-transform: translateY(6px) rotate(45deg);
-     -moz-transform: translateY(6px) rotate(45deg);
-      -ms-transform: translateY(6px) rotate(45deg);
-       -o-transform: translateY(6px) rotate(45deg);
-          transform: translateY(6px) rotate(45deg);
+  -webkit-transform: translateY(11px) rotate(45deg);
+     -moz-transform: translateY(11px) rotate(45deg);
+      -ms-transform: translateY(11px) rotate(45deg);
+       -o-transform: translateY(11px) rotate(45deg);
+          transform: translateY(11px) rotate(45deg);
   background-color: rgba(255,255,255,0.7); 
 }
 
@@ -192,11 +193,11 @@ i.circular.dark-gray.icon {
 }
 
 #hamburger-button.open span:nth-child(3) {
-  -webkit-transform: translateY(-13px) rotate(-45deg);
-     -moz-transform: translateY(-13px) rotate(-45deg);
-      -ms-transform: translateY(-13px) rotate(-45deg);
-       -o-transform: translateY(-13px) rotate(-45deg);
-          transform: translateY(-13px) rotate(-45deg);
+  -webkit-transform: translateY(-9px) rotate(-45deg);
+     -moz-transform: translateY(-9px) rotate(-45deg);
+      -ms-transform: translateY(-9px) rotate(-45deg);
+       -o-transform: translateY(-9px) rotate(-45deg);
+          transform: translateY(-9px) rotate(-45deg);
   background-color: rgba(255,255,255,0.7);          
 }
 
