@@ -157,9 +157,9 @@ i.circular.dark-gray.icon {
 }
 
 #hamburger-button > span {
-  margin-bottom: 4px;
-  height: 4px;
-  width: 30px;
+  margin-bottom: 5px;
+  height: 5px;
+  width: 35px;
   background-color: rgba(104,166,144,1);
   display: block;
   -webkit-transition: all 0.5s ease;
@@ -170,7 +170,7 @@ i.circular.dark-gray.icon {
 }
 
 #hamburger-button.open {
-  margin-right: -10px;
+  margin-right: -5px;
 }
 
 
@@ -192,11 +192,11 @@ i.circular.dark-gray.icon {
 }
 
 #hamburger-button.open span:nth-child(3) {
-  -webkit-transform: translateY(-9px) rotate(-45deg);
-     -moz-transform: translateY(-9px) rotate(-45deg);
-      -ms-transform: translateY(-9px) rotate(-45deg);
-       -o-transform: translateY(-9px) rotate(-45deg);
-          transform: translateY(-9px) rotate(-45deg);
+  -webkit-transform: translateY(-13px) rotate(-45deg);
+     -moz-transform: translateY(-13px) rotate(-45deg);
+      -ms-transform: translateY(-13px) rotate(-45deg);
+       -o-transform: translateY(-13px) rotate(-45deg);
+          transform: translateY(-13px) rotate(-45deg);
   background-color: rgba(255,255,255,0.7);          
 }
 
