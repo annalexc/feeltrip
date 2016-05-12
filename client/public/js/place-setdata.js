@@ -1,6 +1,6 @@
-// 
+//
 $(function(){
-  setSaveSnapShotHandler();  
+  setSaveSnapShotHandler();
 });
 
 
@@ -16,7 +16,7 @@ function setSaveSnapShotHandler(){
       var $postedAt = $($tweetsRefreshed[i]).find('.posted-at').text();
       var $tweetObject = { text: $tweetText, screen_name: $screenName, posted_at: $postedAt };
       tweet_data.push($tweetObject);
-      
+
     };
 
     var weather_data = [];
@@ -50,7 +50,7 @@ function saveSnapShot(snapShotData, location){
     success: function(data){
       console.log("I get here");
       console.log(data);
-      window.location.href = location; 
+      window.location.href = location;
     }
   });
 };
