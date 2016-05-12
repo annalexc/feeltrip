@@ -7,9 +7,10 @@ $(function(){
 function setSaveSnapShotHandler(){
   $('#save').on('click', function(){
     var tweet_data = [];
-    var username = Cookies.getJSON("current_user").username;
-    for(var i = 0; i<$('#tweets-refreshed').children().length; i++){
-      var $tweetsRefreshed = $('#tweets-refreshed').children();
+    var username = Cookies.getJSON('current_user').username;
+    var userID = Cookies.getJSON('current_user')._id
+    for(var i = 0; i<$('#tweets-refreshed').find('.tweet').length; i++){
+      var $tweetsRefreshed = $('#tweets-refreshed').find('.tweet');
       var $tweetText = $($tweetsRefreshed[i]).find('.tweet-text').text();
       var $screenName = $($tweetsRefreshed[i]).find('.screen-name').text();
       var $postedAt = $($tweetsRefreshed[i]).find('.posted-at').text();
@@ -30,12 +31,13 @@ function setSaveSnapShotHandler(){
 
     var snapShotData = {
       username: username,
+      userID: userID,
       tweet_data: tweet_data,
       weather_data: weather_data,
       location: $location
     };
     console.log(snapShotData);
-    saveSnapShot(snapShotData, $location);
+    //saveSnapShot(snapShotData, $location);
   });
 };
 
