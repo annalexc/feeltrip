@@ -36,7 +36,7 @@ function setSaveSnapShotHandler(){
       weather_data: weather_data,
       location: $location
     };
-    console.log(snapShotData);
+    // console.log(snapShotData);
     saveSnapShot(snapShotData, $location);
   });
 };
