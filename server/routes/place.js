@@ -68,6 +68,11 @@ router.get('/place/:name', function(req, res, next) {
         placeId = '5a110d312052166f';
         break;
       }
+      case "singapore": {
+        woeId = 1062617;
+        placeId = '2509b9adc1fedfd2';
+        break;
+      }
     }
   
     getAllTrendsPlace(woeId,res, placeId, name);
@@ -212,24 +217,13 @@ function getHashtagTrends(trends){
 
 
 function getTweets(trends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, res, name){
-    // var dt = new Date(trendsAsOf);;
-    // // For todays date;
-    // Date.prototype.today = function () { 
-    //   return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
-    // }
-    // // For the time now
-    // Date.prototype.timeNow = function () {
-    //  return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
-    // }
-
-    // var datetime = "LastSync: " + new Date().today() + " @ " + new Date().timeNow();
-
-  var datetime = getCurrentTime();
+  var datetime = getCurrentDateTime();
 
   //LIMIT TWEETS TO JUST THE FIRST FIVE TRENDS
     queryParams = {
       q : 'place:'+placeId+trends.join(' OR '),
       count: 20,
+      lang: 'en',
       result_type : 'mixed'
     }
 
@@ -266,7 +260,7 @@ function produceLocalTweets(tweetsByHash,truncatedTweets){
   return truncatedTweets;
 };
 
-function getCurrentTime() {
+function getCurrentDateTime() {
   var date = new Date();
   var d = date.toDateString();
   var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();

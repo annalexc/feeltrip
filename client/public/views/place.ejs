@@ -30,8 +30,9 @@
 
       <!-- Tweets pulled from Twitter -->
       <div class="hidden" id="tweets-refreshed">
-        <div class="section-header">Current Trends</div>
+        
         <div class="ui left aligned vertical segment">
+          <div class="section-header">Current Trends</div>
           <% tweets.forEach(function(tweet, index){ %>
           <div class="tweet">
             <p class="tweet-text"><%= tweet.text; %></p>
