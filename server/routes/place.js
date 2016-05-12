@@ -117,10 +117,10 @@ function getAllTrendsPlace(woeId, res, placeId, name){
           limitedTrends = createLimitedTrendsArray(globalTrends,localTrends);
 
           var hashtagTrends = [];
-          hashtagTrends = getHashtagTrends(limitedTrends);
+          setTimeout(getHashtagTrends(limitedTrends,hashtagTrends), 250);
 
           var truncatedTweets = [];
-          getTweets(hashtagTrends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, res, name);
+          setTimeout(getTweets(hashtagTrends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, res, name), 500);
           // console.log(truncatedTweets);
 
           // ******************************************************** //
@@ -198,8 +198,7 @@ function limitTrends(localTrends,limitedTrends,globalTrends){
   };
 };
 
-function getHashtagTrends(trends){
-  var hashtagTrends = [];
+function getHashtagTrends(trends, hashtagTrends){
   var i = 0;
   count = 0;
   // Limit to 10 local trends
@@ -212,7 +211,6 @@ function getHashtagTrends(trends){
     };
     i++;
   };
-  return hashtagTrends;
 };
 
 
