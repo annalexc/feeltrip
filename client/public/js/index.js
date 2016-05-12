@@ -21,9 +21,9 @@ function loginHandler(){
         //console.log(data);
 
         Cookies.set('jwt_token', data.token);
-        Cookies.set('current_username', data.user);
-        user = Cookies.getJSON("current_user").username;
-        userId = Cookies.getJSON("current_user")._id;
+        Cookies.set('current_user', data.user);
+        user = Cookies.getJSON('current_user').username;
+        userId = Cookies.getJSON('current_user')._id;
         if (Cookies.getJSON('jwt_token')){
           console.log("What up", user);
           window.location.href = 'main'; 
