@@ -19,6 +19,7 @@
 
 <div class="page-wrapper">
   <h1 id="place"><%= name.toUpperCase().replace('-', ' '); %></h1>
+  <p id="subtitle" class="dark-mint"><%= subtitle %></p>
   <div class="ui container">
   <div class="ui stackable grid">
 
@@ -114,9 +115,9 @@
 
   <!-- Navigation -->
   <nav>
-    <a href='/place/<%=name%>?refresh=true' id="refresh"><i class="circular dark-mint large refresh icon"></i></a>
-    <i class="circular dark-mint large save icon" id="save"></i>
-    <i class="circular dark-mint large sign out icon logout"></i>
+    <a href='/place/<%=name%>?refresh=true' id="refresh"><i class="circular dark-mint refresh icon"></i></a>
+    <i class="circular dark-mint save icon" id="save"></i>
+    <i class="circular dark-mint sign out icon logout"></i>
 
   </nav>
 

@@ -75,7 +75,8 @@ router.get('/place/:name', function(req, res, next) {
   } else {
     var trends = [];
     var tweets = [];
-    res.render('place', {trends: trends, name: name, tweets: tweets});
+    var subtitle = "Saved Snapshots View"
+    res.render('place', {trends: trends, name: name, tweets: tweets, subtitle: subtitle});
   }
 
 });
@@ -94,7 +95,9 @@ function getAllTrendsPlace(woeId, res, placeId, name){
     } else {
 
       var localTrends = [];
+      
       localTrends = parseTrends(localTweets, localResponse, localTrends);
+      var trendsAsOf = localTrends[0].as_of;
 
       client.get('trends/place', globalParams, function(globalErr, globalTweets, globalResponse){ 
         if(globalErr){
@@ -112,7 +115,7 @@ function getAllTrendsPlace(woeId, res, placeId, name){
           hashtagTrends = getHashtagTrends(limitedTrends);
 
           var truncatedTweets = [];
-          getTweets(hashtagTrends, placeId, truncatedTweets, hashtagTrends, res, name);
+          getTweets(hashtagTrends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, res, name);
           // console.log(truncatedTweets);
 
           // ******************************************************** //
@@ -195,7 +198,7 @@ function getHashtagTrends(trends){
   var i = 0;
   count = 0;
   // Limit to 10 local trends
-  while((count<10)){
+  while((count<15)){
     // Check if trend has a hashtag
     var trend = trends[i];
     if(trend.indexOf('#') != -1){
@@ -208,20 +211,36 @@ function getHashtagTrends(trends){
 };
 
 
-function getTweets(trends, placeId, truncatedTweets, hashtagTrends, res, name){
+function getTweets(trends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, res, name){
+    // var dt = new Date(trendsAsOf);;
+    // // For todays date;
+    // Date.prototype.today = function () { 
+    //   return ((this.getDate() < 10)?"0":"") + this.getDate() +"/"+(((this.getMonth()+1) < 10)?"0":"") + (this.getMonth()+1) +"/"+ this.getFullYear();
+    // }
+    // // For the time now
+    // Date.prototype.timeNow = function () {
+    //  return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
+    // }
+
+    // var datetime = "LastSync: " + new Date().today() + " @ " + new Date().timeNow();
+
+  var datetime = getCurrentTime();
+
   //LIMIT TWEETS TO JUST THE FIRST FIVE TRENDS
     queryParams = {
       q : 'place:'+placeId+trends.join(' OR '),
-      count: 15,
+      count: 20,
       result_type : 'mixed'
     }
+
+
 
     client.get('search/tweets', queryParams, function(error, tweets, response){
       if(error){
         console.log('Err: ', error);
       } else {
         truncatedTweets = produceLocalTweets(tweets,truncatedTweets);
-        res.render('place', {trends: hashtagTrends, name: name, tweets: truncatedTweets});
+        res.render('place', {trends: hashtagTrends, name: name, tweets: truncatedTweets, subtitle: datetime });
         // console.log("I get here!");
       };
 
@@ -246,6 +265,23 @@ function produceLocalTweets(tweetsByHash,truncatedTweets){
   // console.log(truncatedTweets);
   return truncatedTweets;
 };
+
+function getCurrentTime() {
+  var date = new Date();
+  var d = date.toDateString();
+  var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+  var am_pm = date.getHours() >= 12 ? "PM" : "AM";
+  
+  if (hours == 0) { hours = 12; }
+  hours = hours < 10 ? "0" + hours : hours;
+  // hours = ((hours + 11) % 12 + 1);
+  var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+  time = hours + ":" + minutes + " " + am_pm;
+  var datetime = "Data Refreshed: " + d + "  " + time;  
+  console.log(datetime);
+  return datetime;
+
+    };
 
 
 
