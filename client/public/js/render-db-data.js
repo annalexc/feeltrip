@@ -3,21 +3,30 @@ console.log("Yo");
 
 var renderSnapshots = function(snapshotData){
   console.log("Snapshot Data in Render Snapshots is", snapshotData);
-  // var $location = $('#place').text();
-  // var $tweetsSaved = $('#tweets-saved');
-  // $tweetsSaved.empty();
-  // for(var i = 0; i<snapshotData.length; i++){
-  //   if($location == snapshotData[i].location){
-  //     var tweet = snapshotData[i].tweet_data;
-  //     for(var x = 0; x< snapshotData[i].tweet_data.length; x++){
-  //       var appendTweetText = ($('<p>').class('tweet-text').text(tweet[x].text));
-  //       var appendTweetInfo = ($('<p>').class('info'));
-  //       var appendScreenName = ($('<span>').class('screen-name').text(tweet[x].screen_name));
-  //       var appendPostedAt = ($('<span>').class('posted-at').text(tweet[x].posted_at));
-  //       $tweetsSaved.append($('<div>').class('tweet').append(appendTweetText));
-  //     };
-  //   };
-  // };
+  var $location = $('#place').text();
+  var $tweetsSaved = $('#tweets-saved');
+  $tweetsSaved.empty();
+  for(var i = 0; i<snapshotData.length; i++){
+    if($location == snapshotData[i].location){
+      var tweet = snapshotData[i].tweet_data;
+      for(var x = 0; x< snapshotData[i].tweet_data.length; x++){
+        var $tweet = $('<div>').addClass('tweet');
+        var $tweetText = ($('<p>').addClass('tweet-text').text(tweet[x].text));
+        var $tweetInfo = ($('<p>').addClass('info'));
+        var $screenName = ($('<span>').addClass('screen-name').text(tweet[x].screen_name));
+        var $postedAt = ($('<span>').addClass('posted-at').text(tweet[x].posted_at));
+        $tweetInfo.append($screenName);
+        $tweetInfo.append($postedAt);
+        $tweet.append($tweetText);
+        $tweet.append($tweetInfo);
+        $tweetsSaved.append($tweet);
+
+
+        // $tweetsSaved.append($('<div>').addClass('tweet').append(appendTweetText));
+
+      };
+    };
+  };
 };
 
 function renderSaved(){
@@ -33,5 +42,9 @@ function renderSaved(){
     }
   });
 };
+
+$( document ).ready(function() {
+    renderSaved();
+});
 
 //renderSaved();
