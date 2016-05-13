@@ -171,7 +171,7 @@ function parseTimeStamp(rawTimeStamp){
     }
   };
   genAmPm();
-  var timeStamp = 'Saved on ' + month + ' ' + day + ', ' + year + ' at ' + hour + ':' + minute + amPm;
+  var timeStamp = 'Saved on ' + month + ' ' + day + ', ' + year + ' at ' + hour + ':' + minute + amPm + ' GMT(EST+4)';
   return timeStamp;
 };
 
