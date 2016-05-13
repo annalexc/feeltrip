@@ -4,10 +4,10 @@ What are they tweeting about?
 Curious?
 Let's find out.
 
-Let's go on a feeltrip:
-http://feeltrip.herokuapp.com/
+Let's go on a feeltrip:  http://feeltrip.herokuapp.com/
 
-- (application hosted on heroku)
+(application hosted on heroku)
+
  
 **ABOUT**:
 
@@ -32,17 +32,8 @@ This was a group project executed by 3 WDI developers (General Assembly in New Y
 The biggest challenge in development was to generate the desired content from the twitter api. It was a great challenge as well as a valuable experience.
 
 
-**WIREFRAMES**:
-
-- ![wireframe](client/public/images/feeltrip-wireframe1.png)
-- ![Login page](client/public/images/feeltrip-screen1.png)
-- ![Main page - gateway to city pages](client/public/images/feeltrip-screen2.png)
-- ![Main page - active link](client/public/images/feeltrip-screen3.png)
-- ![City page](client/public/images/feeltrip-screen4.png)
-- ![Menu buttons](client/public/images/feeltrip-screen5.png)
-
-
 **USER STORIES**:
+
 - As a user, I want to be able to easily see all of the locations in one place so that I can make an informed decision about where I want to explore.
 
 - As a user, I want to be able to view one location at a time so that I can feel immersed in the place (detailed view).
@@ -62,3 +53,24 @@ The biggest challenge in development was to generate the desired content from th
 - As a user, I want to be able to save a snapshot of all of the information on location page so that I can look back on it later.
 
 - As a user, I want a universal menu to be able to access from any page that can direct me where I want to go next.
+
+
+**WIREFRAMES**:
+
+- Wireframe:
+![wireframe](client/public/images/feeltrip-wireframe1.png)
+
+- Login Page: 
+![Login page](client/public/images/feeltrip-screen1.png)
+
+- Main Page: 
+![Main page - gateway to city pages](client/public/images/feeltrip-screen2.png)
+
+- Main Page: active link with hover effect: 
+![Main page - active link](client/public/images/feeltrip-screen3.png)
+
+- City Page:
+![City page](client/public/images/feeltrip-screen4.png)
+
+- Menu buttons: 
+![Menu buttons](client/public/images/feeltrip-screen5.png)
