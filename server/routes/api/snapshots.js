@@ -57,5 +57,32 @@ router.post('/', function(req, res, next){
 });
 
 
+// PUT
+router.put('/:id', function(req, res, next){
+  console.log('Updating!!!!!!!');
+  var id = req.params.id;
+  Snapshot.findByIdAndUpdate(id, req.body.snapshot, function(err, snapshot){
+    if (!req.body.snapshot) {
+      res.status(422).end();
+    } else {
+      res.status(204).end();
+    };
+  });
+});
+
+
+// DELETE
+router.delete('/:id', function(req, res, next){
+  var id = req.params.id;
+  Snapshot.findByIdAndRemove(id, function(err){
+    if (err) {
+      res.status(500).end();
+    }else {
+      res.status(204).end();
+    }
+  })
+});
+
+
 
 module.exports = router;

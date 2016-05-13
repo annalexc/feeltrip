@@ -21,7 +21,7 @@ function setPlaceBackground(){
     var img = $(places[i]).find('span').text();
     img = img.toLowerCase().replace(' ', '-');
     console.log(img);
-    $(places[i]).find('.bg').attr('style', 'background:url(/images/' + img +'.jpg);background-size:cover');
+    $(places[i]).find('.bg').attr('style', 'background:url(/images/' + img +'-small.jpg);background-size:cover');
   };
 };
 

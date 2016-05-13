@@ -11,7 +11,8 @@ var express         = require('express'),
     apiAuthRouter   = require('./server/routes/api/auth.js'),
     apiUsersRouter  = require('./server/routes/api/users.js'),
     ejs             = require("ejs"),
-    Twitter         = require('twitter');
+    Twitter         = require('twitter'),
+    compress        = require('compression');
 
 require('dotenv').config();
 
@@ -27,7 +28,9 @@ var client = new Twitter({
 // process.env.MONGOLAB_URI is needed for when we deploy to Heroku
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/feeltrip" );
 
+
 // log requests to STDOUT
+app.use(compress());
 app.use(morgan('dev'));
 app.set('view engine', 'ejs')
 

@@ -19,6 +19,7 @@
   "dependencies": {
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.0",
+    "compression": "^1.6.2",
     "cookie-parser": "^1.4.1",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
