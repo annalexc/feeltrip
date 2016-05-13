@@ -1,4 +1,5 @@
-**FEELTRIP** - window to the world
+**FEELTRIP**
+"Window to the world"
 
 What are they tweeting about?
 
@@ -8,7 +9,7 @@ Let's find out.
 
 Let's go on a feeltrip:  
 http://feeltrip.herokuapp.com/
-- (hosted on heroku)
+(hosted on heroku)
 
  
 **ABOUT**:
