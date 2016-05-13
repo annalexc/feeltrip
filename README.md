@@ -8,6 +8,8 @@ Let's go on a feeltrip:
 http://feeltrip.herokuapp.com/
 
 - (application hosted on heroku)
+ 
+**ABOUT**:
 
 Do you ever wonder what people from other countries find interesting? Well, here is your chance to be up to date with the hottest, most trendy topics being sent ('tweeted') over twitter in 9 very different cities around the world. "FEELTRIP" offers you the possibility to feel the zeitgeist from a number of diverse locations. It is a constantly changing pool of tweets and trends. If you want to save the ones you like, just press the save button and they will be waiting for your next visit. Popular tweets also have links to ongoing discussion pages if you would like to know more about the subject.
 
@@ -17,9 +19,11 @@ Do you ever wonder what people from other countries find interesting? Well, here
 FeelTrip is a real time content aggregator that enables users to stay connected to places beyond where they currently live. Unlike SnapChat, Twitter, Facebook, FeelTrip immerses users in the current mood of a given place, helping them either discover something new or reminisce in the now.
 At FeelTrip we believe that everyone is a global citizen. We also recognize that what being a global citizen means to people is both personal and authentic. That is why ­ by launching FeelTrip ­ we aim to provide an unmanufactured, unedited experience of what it feels like to be in places we are not at for the moment.
 
+
 **TECHNOLOGY**:
 
 The site is based on the node.js, express and MongoDB stack with a JavaScript front end. It uses authentication: jwt passport for the client side browser and for the server side it uses OAUTH 2.0. The site is based on the twitter api in the back-end - it pulls data from the openweathermap api (http://openweathermap.org/) and timezonedb api (https://timezonedb.com/) via AJAX calls in the front-end.
+
 
 **GENERAL APPROACH**:
 
