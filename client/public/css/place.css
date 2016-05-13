@@ -37,6 +37,13 @@ nav#main-menu {
         transition: all 0.5s ease;
 }
 
+.ui.container {
+  width: 90% !important;
+}
+
+.ui.left.aligned.vertical.segment{
+  padding-top: 0;
+}
 nav#main-menu.open {
   right: 3.5%;
 }
@@ -68,6 +75,11 @@ nav#sub-nav span{
   margin-bottom: 10px;
 }
 
+.snapshot-title{
+  margin-top: 0;
+}
+
+
 #place {
   font: 3.25rem 'Playfair Display';
   margin: 20px auto 0;
@@ -79,15 +91,23 @@ nav#sub-nav span{
 }
 
 .snapshot-title {
-  font: 1.2rem 'Montserrat';
-  margin-top: -20px;
+  font: 1rem 'Open Sans Condensed';
+  font-style: italic;
 }
 
-.snapshot {
-  background-color: rgba(130,208,181,0.2);
+.snapshot, .weather-wrapper {
+  /*background-color: rgba(130,208,181,0.2);*/
+  position: relative;
+  background-color: rgba(255,255,255,0.2);
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 0.5em;
+}
+
+i.circular.dark-mint.remove.icon{
+  position: absolute;
+  right: 2%;
+  margin-top: -10px;
 }
 
 .message {
@@ -110,6 +130,10 @@ a.hashtag:hover, a.screen-name:hover {
 
 #tweets-refresh {
   font: 1rem 'Lora';
+}
+
+#saved-trends {
+  padding-top: 0;
 }
 
 .tweet {
@@ -143,7 +167,7 @@ i.circular.dark-mint.icon {
 i.circular.dark-mint.icon:hover {
   cursor: pointer;
   background-color: rgb(104,166,144) !important;
-  margin: 0 auto;
+
 }
 
 i.circular.dark-gray.icon {

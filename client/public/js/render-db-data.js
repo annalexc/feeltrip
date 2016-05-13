@@ -1,6 +1,5 @@
 console.log("Yo");
 
-"2016-05-12T16:57:14.204Z"
 function parseTimeStamp(rawTimeStamp){
   var year = rawTimeStamp.substring(0, 4);
   var monthRaw  = rawTimeStamp.charAt(5)+rawTimeStamp.charAt(6);
@@ -170,26 +169,33 @@ function parseTimeStamp(rawTimeStamp){
     }
   };
   genAmPm();
-  var timeStamp = 'Saved on ' + month + ' ' + day + ', ' + year + ' at ' + hour + ':' + minute + amPm + ' GMT(EST+4)';
+  var timeStamp = 'Snapshot Saved: ' + day + ' ' + month + ' ' + year + ', ' + hour + ':' + minute + amPm + ' GMT (EST+4)';
   return timeStamp;
 };
 
 
 
-var renderSnapshots = function(snapshotData, callback1, callback2){
+var renderSnapshots = function(snapshotData, callback1, callback2, callback3){
   callback1 = callback1 || function(){};
   callback2 = callback2 || function(){};
+  callback3 = callback3 || function(){};
   // console.log("Snapshot Data in Render Snapshots is", snapshotData);
   var $location = $('#place').text();
   var $tweetsSaved = $('#tweets-saved');
   $tweetsSaved.empty();
- 
 
   for(var i = 0; i<snapshotData.length; i++){
     if($location == snapshotData[i].location){
+
       $snapshot = $('<div>').addClass('snapshot');
+      var $removeLink = $('<a>').addClass('remove');
+      $removeLink.append(($('<i>').addClass('circular dark-mint remove icon')));
+      $removeLink.attr('id', snapshotData[i]._id);
+      $snapshot.append($removeLink);
+
       var savedTime = parseTimeStamp(snapshotData[i].createdAt);
       $snapshot.append($('<h1>').addClass('snapshot-title').text(savedTime));
+      
       var tweet = snapshotData[i].tweet_data;
       for(var x = 0; x< snapshotData[i].tweet_data.length; x++){
         var $tweet = $('<div>').addClass('tweet');
@@ -197,20 +203,26 @@ var renderSnapshots = function(snapshotData, callback1, callback2){
         var $tweetInfo = ($('<p>').addClass('info'));
         var $screenName = ($('<span>').addClass('screen-name').text(tweet[x].screen_name));
         var $postedAt = ($('<span>').addClass('posted-at').text(tweet[x].posted_at));
+        
+        
+        $tweetInfo.append($('<span>').text('-'));
         $tweetInfo.append($screenName);
+        $tweetInfo.append($('<span>').text(', '));
         $tweetInfo.append($postedAt);
         $tweet.append($tweetText);
         $tweet.append($tweetInfo);
+        
         $snapshot.append($tweet);
 
         // $tweetsSaved.append($('<div>').addClass('tweet').append(appendTweetText));
       };
+      
       $tweetsSaved.append($snapshot);
 
     };
   };
 
-  if (($('.snapshot').length === 0){
+  if($('.snapshot').length === 0){
     var $message = $('<div>').addClass('message');
       $message.html('No tweets saved. Click or tap <i class="circular mini dark-mint refresh icon" id="modal-close"></i> to get current trends.');
       $tweetsSaved.append($message);
@@ -218,6 +230,7 @@ var renderSnapshots = function(snapshotData, callback1, callback2){
 
   callback1();
   callback2();
+  callback3();
 };
 
 function renderSaved(){
@@ -228,11 +241,35 @@ function renderSaved(){
     success: function(snapshotData){
     //data.forEach( renderSnapshots );
     // renderSnapshots(snapShotData);
-    //console.log("Snapshot Data is:", snapshotData);
-    renderSnapshots(snapshotData, findHashTags, findScreenNames);
+    console.log("Snapshot Data is:", snapshotData);
+    renderSnapshots(snapshotData, findHashTags, findScreenNames, deletesnapshotHandler);
     }
   });
 };
+
+
+function deleteSnapshot(snapshotId){
+  $.ajax({
+    url: '/api/snapshots/' + snapshotId,
+    type: 'delete',
+    //data: {_method: 'delete'},
+    success: function(data){
+      renderSaved();
+    }
+  });
+};
+
+function deletesnapshotHandler(){
+  $('.snapshot').on('click', 'a.remove', function() {   
+    var id = $(this).attr('id');
+    //console.log(id);
+    $(this).parentsUntil('#tweets-saved').fadeOut(700, function(){
+      deleteSnapshot(id);
+    });
+  });
+};
+
+
 
 
 // Find all hashtags in place page and replace them with links
@@ -269,4 +306,5 @@ function addLinkToScreenNames(text){
 
 $( document ).ready(function() {
   renderSaved();
+  deletesnapshotHandler();
 });

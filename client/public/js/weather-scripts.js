@@ -46,7 +46,7 @@ $(document).ready(function(){
 
         $city.text(data.name + ', ' + data.sys.country);
         $temperature.text(Math.round(data.main.temp) + ' °F / ' + Math.round((data.main.temp - 32) * (5 / 9)) + ' °C');
-        $description.text(data.weather[0].description);
+        $description.text((data.weather[0].description).charAt(0).toUpperCase() + (data.weather[0].description).slice(1));
         $humidity.text('Humidity: ' + data.main.humidity + '%');
         $wind.text('Wind: ' + data.wind.speed + ' mph');
         // $sunRiseSet.text('Sunrise: ' + convertTime(data.sys.sunrise) + ' |Sunset: ' + convertTime(data.sys.sunset));
