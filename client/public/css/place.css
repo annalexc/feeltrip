@@ -78,6 +78,9 @@ nav#sub-nav span{
   font: 1.1rem 'Open Sans Condensed';
 }
 
+.message {
+  font: 1rem 'Playfair Display';
+}
 a {
   color: white;
 }
