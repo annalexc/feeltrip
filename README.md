@@ -1,7 +1,7 @@
-**FEELTRIP**
+**FEELTRIP** - window to the world
 
-what are they tweeting about?
-window to the world
+What are they tweeting about?
+
 
 
 
