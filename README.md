@@ -6,7 +6,8 @@ Let's find out.
 
 Let's go on a feeltrip:
 http://feeltrip.herokuapp.com/
-- (link to the application hosted on heroku)
+
+- (application hosted on heroku)
 
 Do you ever wonder what people from other countries find interesting? Well, here is your chance to be up to date with the hottest, most trendy topics being sent ('tweeted') over twitter in 9 very different cities around the world. "FEELTRIP" offers you the possibility to feel the zeitgeist from a number of diverse locations. It is a constantly changing pool of tweets and trends. If you want to save the ones you like, just press the save button and they will be waiting for your next visit. Popular tweets also have links to ongoing discussion pages if you would like to know more about the subject.
 
@@ -27,7 +28,7 @@ This was a group project executed by 3 WDI developers (General Assembly in New Y
 The biggest challenge in development was to generate the desired content from the twitter api. It was a great challenge as well as a valuable experience.
 
 
-**Wireframes**
+**WIREFRAMES**:
 
 - ![wireframe](client/public/images/feeltrip-wireframe1.png)
 - ![Login page](client/public/images/feeltrip-screen1.png)
@@ -37,7 +38,7 @@ The biggest challenge in development was to generate the desired content from th
 - ![Menu buttons](client/public/images/feeltrip-screen5.png)
 
 
-**User stories**
+**USER STORIES**:
 - As a user, I want to be able to easily see all of the locations in one place so that I can make an informed decision about where I want to explore.
 
 - As a user, I want to be able to view one location at a time so that I can feel immersed in the place (detailed view).

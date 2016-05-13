@@ -1,24 +1,33 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css);
-
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 
 html {
   background: lightblue;
 }
 
 .weather-wrapper {
-  max-width: 480px;
-  margin: auto;
+  /*max-width: 480px;*/
+  /*margin: auto;*/
 }
 
 #weather-panel {
   /*background: rgba(186,229,214,0.2);*/
-  padding: 5px;
+  /*padding: 5px;*/
+  /*font: 1.2rem 'Open Sans Condensed';*/
+}
+
+h3 {
+  margin: 0 auto;
 }
 
 #weather-icon {
   font-size: 5em;
+  margin: 0 auto;
+  padding: 0;
+  color: rgb(130,208,181);
 }
 
 #temperature {
-  font-size: 2em;
+  font-size: 1.5em;
 }
