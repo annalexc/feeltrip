@@ -68,7 +68,7 @@ nav#sub-nav span{
   margin-bottom: 10px;
 }
 
-#place{
+#place {
   font: 3.25rem 'Playfair Display';
   margin: 20px auto 0;
   line-height: 1.1;
@@ -76,6 +76,18 @@ nav#sub-nav span{
 
 #subtitle {
   font: 1.1rem 'Open Sans Condensed';
+}
+
+.snapshot-title {
+  font: 1.2rem 'Montserrat';
+  margin-top: -20px;
+}
+
+.snapshot {
+  background-color: rgba(130,208,181,0.2);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 0.5em;
 }
 
 .message {

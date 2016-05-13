@@ -162,7 +162,6 @@ function parseTimeStamp(rawTimeStamp){
   var amPm;
 
   function genAmPm(){
-    console.log(hour);
     if(parseInt(hourRaw)<12){
 
       amPm = 'am';
@@ -184,14 +183,13 @@ var renderSnapshots = function(snapshotData, callback1, callback2){
   var $location = $('#place').text();
   var $tweetsSaved = $('#tweets-saved');
   $tweetsSaved.empty();
-  console.log(snapshotData.length);
  
 
   for(var i = 0; i<snapshotData.length; i++){
     if($location == snapshotData[i].location){
+      $snapshot = $('<div>').addClass('snapshot');
       var savedTime = parseTimeStamp(snapshotData[i].createdAt);
-      console.log(snapshotData[i].createdAt);
-      $tweetsSaved.append($('<div>').addClass('saved-time').text(savedTime));
+      $snapshot.append($('<h1>').addClass('snapshot-title').text(savedTime));
       var tweet = snapshotData[i].tweet_data;
       for(var x = 0; x< snapshotData[i].tweet_data.length; x++){
         var $tweet = $('<div>').addClass('tweet');
@@ -203,19 +201,16 @@ var renderSnapshots = function(snapshotData, callback1, callback2){
         $tweetInfo.append($postedAt);
         $tweet.append($tweetText);
         $tweet.append($tweetInfo);
-        $tweetsSaved.append($tweet);
+        $snapshot.append($tweet);
 
         // $tweetsSaved.append($('<div>').addClass('tweet').append(appendTweetText));
-
       };
-
-      
-
+      $tweetsSaved.append($snapshot);
 
     };
   };
 
-  if (($('#tweets-saved').find('.tweets')).length === 0){
+  if (($('.snapshot').length === 0){
     var $message = $('<div>').addClass('message');
       $message.html('No tweets saved. Click or tap <i class="circular mini dark-mint refresh icon" id="modal-close"></i> to get current trends.');
       $tweetsSaved.append($message);
@@ -233,7 +228,7 @@ function renderSaved(){
     success: function(snapshotData){
     //data.forEach( renderSnapshots );
     // renderSnapshots(snapShotData);
-    console.log("Snapshot Data is:", snapshotData);
+    //console.log("Snapshot Data is:", snapshotData);
     renderSnapshots(snapshotData, findHashTags, findScreenNames);
     }
   });
@@ -257,7 +252,7 @@ function findScreenNames(){
 
 function addLinkToHashtags(text){
   hashtag_regexp = /#([a-zA-Z0-9]+)/g;
-  console.log("I get here");
+  //console.log("I get here");
   return text.replace(
     hashtag_regexp,
       '<a class="dark-mint hashtag" target="_blank" href="http://twitter.com/search?q=%23$1">#$1</a>'
