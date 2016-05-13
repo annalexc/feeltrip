@@ -13,26 +13,15 @@ $(document).ready(function(){
     $temperature = $panel.find('#temperature'),
     $humidity = $panel.find('#humidity'),
     $wind = $panel.find('#wind'),
-    $search = $wrapper.find('#search'),
-    $form = $search.find('form'),
-    $button = $('#searchbutton'),
-    $location;
+    $localtime = $panel.find('#localtime');
+    $sunRiseSet = $panel.find('#sunRiseSet');
 
     // Identify the place using the url
-    var location;
-    var hashes = window.location.href.slice(window.location.href.indexOf('place/') + 6).split('?');
-    location = hashes[0];
+  var location;
+  var hashes = window.location.href.slice(window.location.href.indexOf('place/') + 6).split('?');
+  location = hashes[0];
 
-    getWeather(location);
-
-  $button.on('click', function(e){
-    e.preventDefault();
-    var $search = $('#search');
-    var location = $search.val();
-    console.log(location + " = location");
-    getWeather(location);
-  });
-
+  getWeather(location);
 
   function getWeather(taco) {
 
@@ -48,11 +37,10 @@ $(document).ready(function(){
 
     $icon.removeClass();
 
-
     requestWeather.done(function(data) {
 
       if (data.cod === '404') {
-        $city.text('city not found');
+        $city.text('something went wrong, try again');
 
       } else {
 
@@ -61,6 +49,8 @@ $(document).ready(function(){
         $description.text(data.weather[0].description);
         $humidity.text('Humidity: ' + data.main.humidity + '%');
         $wind.text('Wind: ' + data.wind.speed + ' mph');
+        // $sunRiseSet.text('Sunrise: ' + convertTime(data.sys.sunrise) + ' |Sunset: ' + convertTime(data.sys.sunset));
+
 
         switch (data.weather[0].icon) {
           case '01d':
@@ -105,27 +95,26 @@ $(document).ready(function(){
   }
 
 
-
   //***************************************
   //-------for timezonedb------------------
   //***************************************
 
-  var $location, $latitude, $longitude;
+  var $latitude,
+      $longitude,
+      $timestamp;
 
-  var hashes = window.location.href.slice(window.location.href.indexOf('place/') + 6).split('?');
-  location = hashes[0];
 
   if (location == "london") {
     latitude = 51.507351;
     longitude = -0.127758;
-  }
+  };
   if (location == "new-york") {
     latitude = 40.712784;
     longitude = -74.005941;
   };
   if (location == "singapore") {
-    latitude = 1.352083;
-    longitude = 103.819836;
+    latitude = 1.2896700;
+    longitude = 103.8500700;
   };
   if (location == "austin") {
     latitude = 30.267153;
@@ -140,16 +129,16 @@ $(document).ready(function(){
     longitude = -90.071532;
   };
   if (location == "tel-aviv") {
-    latitude = -90.071532;
-    longitude = 34.781768;
+    latitude = 32.0808800;
+    longitude = 34.7805700;
   };
   if (location == "san-francisco") {
-    latitude = 34.781768;
+    latitude = 37.774929;
     longitude = -122.419416;
   };
   if (location == "berlin") {
     latitude = 52.520007;
-    longitude = 52.520007;
+    longitude = 13.4050;
   };
 
 
@@ -167,42 +156,34 @@ $(document).ready(function(){
     },
 
       success: function(res){
-        console.log('lat = ' + latitude + '/ lng = ' + longitude);
-        console.log(res);
+        // console.log('lat = ' + latitude + '/ lng = ' + longitude);
+        // console.log(res);
       }
     })
 
     requestTime.done(function(data) {
 
-      // console.log('data = ' + data);
-
       if (data.cod === '404') {
-        console.log('Check what is wrong with timezonedb - no data');
-      } else {
-        console.log('json data should be extracted');
 
+      } else {
+        $timestamp = data.timestamp;
+        if ($timestamp !== 0) {
+        $localtime.text('Local Time:  ' + convertTime($timestamp));
+        }
+        // console.log("$timestamp= " + $timestamp);
       };
     });
   };
-  console.log(location + " = location / " + latitude + '= latitude / ' + longitude + '= longitude');
+
+  function convertTime (timestamp){
+    var theDate = new Date(timestamp * 1000);
+    dateString = theDate.toGMTString();
+    return dateString.slice(0, dateString.length-4);
+  }
 
   getTime(latitude, longitude);
 
 }); // end of doc ready
-
-
-
-// function getForecastIoWeather(latitude, longitude) {
-//
-//   var requestWeather2 = $.ajax({
-//   url:'https://api.forecast.io/forecast/6f7df3b994c4d8618a70f65fab6c2eaa/40.712784,-74.005941',
-//   type: "GET",
-//   dataType: 'jsonp',
-//   success: function(res){
-//     // console.log(res);
-//   }
-// })
-
 
 
 
@@ -224,8 +205,7 @@ $(document).ready(function(){
 
 
 
-// ----------AJAX DATA - to remove after selecting the data ---------------
- // http://api.openweathermap.org/data/2.5/weather?q=Stamford&apiKey=7271d3292aac8f43062a11e66a3aa1b0
+// ----------openweathermap DATA - to remove after selecting the data ---------------
 
  //   "coord": {
  //     "lon": -74.01,
@@ -267,4 +247,4 @@ $(document).ready(function(){
  //   "name": "New York",
  //   "cod": 200
 
- // ----------end of AJAX data to be removed----------------
+ // ----------end of openweathermap data ----------------
