@@ -180,10 +180,13 @@ function parseTimeStamp(rawTimeStamp){
 var renderSnapshots = function(snapshotData, callback1, callback2){
   callback1 = callback1 || function(){};
   callback2 = callback2 || function(){};
-  console.log("Snapshot Data in Render Snapshots is", snapshotData);
+  // console.log("Snapshot Data in Render Snapshots is", snapshotData);
   var $location = $('#place').text();
   var $tweetsSaved = $('#tweets-saved');
   $tweetsSaved.empty();
+  console.log(snapshotData.length);
+ 
+
   for(var i = 0; i<snapshotData.length; i++){
     if($location == snapshotData[i].location){
       var savedTime = parseTimeStamp(snapshotData[i].createdAt);
@@ -202,12 +205,22 @@ var renderSnapshots = function(snapshotData, callback1, callback2){
         $tweet.append($tweetInfo);
         $tweetsSaved.append($tweet);
 
-
         // $tweetsSaved.append($('<div>').addClass('tweet').append(appendTweetText));
 
       };
+
+      
+
+
     };
   };
+
+  if (($('#tweets-saved').find('.tweets')).length === 0){
+    var $message = $('<div>').addClass('message');
+      $message.html('No tweets saved. Click or tap <i class="circular mini dark-mint refresh icon" id="modal-close"></i> to get current trends.');
+      $tweetsSaved.append($message);
+  };
+
   callback1();
   callback2();
 };
