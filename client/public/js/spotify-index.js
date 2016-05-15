@@ -37,7 +37,7 @@ function redirect(){
   var queryParams = [
     'client_id=e9adbd15b57e4de7bc43f704b953af8e',
     'response_type=token',
-    'redirect_uri=http://localhost:3000/',
+    'redirect_uri=http://feeltrip.herokuapp.com/',
     'state=spotify_authorization_redirect'
     ].join('&');
     window.location = baseURL + '?' + queryParams;

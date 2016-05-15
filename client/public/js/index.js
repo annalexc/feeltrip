@@ -10,6 +10,9 @@ function loginHandler(){
   var $loginForm = $('#login-form');
 
   $login.on('click', function(){
+    var $loading = $('#loading');
+        $loading.toggleClass('hidden');
+
     $.ajax({
       method: 'post',
       url: '/api/auth',
@@ -19,8 +22,6 @@ function loginHandler(){
       },
       success: function(data) {
         //console.log(data);
-        var $loading = $('#loading');
-        $loading.toggleClass('hidden');
 
         Cookies.set('jwt_token', data.token);
         Cookies.set('current_user', data.user);
@@ -33,6 +34,7 @@ function loginHandler(){
         //This is what sets us up as being logged in
       },
       error: function(data){
+        $loading.toggleClass('hidden');
         var $message = $('#message');
         $message.text('Invalid login credentials. Please try again.').addClass('pink');   
       }
