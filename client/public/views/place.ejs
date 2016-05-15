@@ -13,9 +13,8 @@
   <script src="/js/scripts.js" charset="utf-8"></script>
   <script src="/js/place-setview.js" charset="utf-8"></script>
   <script src="/js/place-setdata.js" charset="utf-8"></script>
-  <script src="/js/render-db-data.js">
-
-  </script>
+  <script src="/js/render-db-data.js"></script>
+  <script src="/js/spotify-place.js"></script>
   <title>FeelTrip</title>
 </head>
 <body>
@@ -76,18 +75,24 @@
          <p id="localtime"></p>
          <p id="sunRiseSet"></p>
        </div>
-     </div>  <!-- end of wrapper-->
+    </div>  <!-- end of wrapper-->
+
+    <div class="spotify-container">
+      <div class="section-header">Playlists</div>
+      <div class="spotify-wrapper">
+        
+        <div class="playlist-container">
+          <ul id="playlists"></ul>
+        </div>
+      </div>
+    </div>
 
 
    </div> <!--end of weather-container-->
 
   </div> <!-- End of stackable grid -->
 
-  <!-- <hr>
-  <p>
-    <a href="/main">View All Places</a>
-  </p>
- -->
+
   <!-- Navigation -->
   <nav id="main-menu">
     <div id="hamburger-button" class="slide">

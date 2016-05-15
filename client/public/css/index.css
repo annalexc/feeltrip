@@ -2,18 +2,37 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 @import url(https://fonts.googleapis.com/css?family=Sacramento);
 
-body {
-  background-color: white;
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(135,135,135);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .page-wrapper {
+  position: fixed;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0,0,0,0.4);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: scroll;
 }
-
 
 .video-container {
   position: absolute;
@@ -56,7 +75,7 @@ body {
 }
 
 #login, #add-user {
-  font: 1.75rem 'Open Sans Condensed' !important;
+  font: 1.85rem 'Open Sans Condensed' !important;
   padding: 8px 30px;
   margin: 0 auto;
 }
@@ -65,10 +84,18 @@ body {
   width: 340px;
 }
 
+#loading-title {
+  font: 2.25rem 'Open Sans Condensed';
+  padding: 134px 0 0 0;
+  color: white;
+  margin: 0 auto;
+}
+
 #message{
   font-size: 1.1rem;
   height: 25px;
   margin: 10px auto;
+  color: rgb(255,198,175);
 }
 
 #subtitle, #sign-up-title { 
@@ -99,19 +126,43 @@ body {
   align-content: center;
 }
 
-#sign-up {
+#modal-container-dark {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+#sign-up, #login-spotify-link, #logout-spotify-link {
   border-bottom: 1px dotted rgb(186,229,214);
   font-weight: bold;
 }
 
-#sign-up:hover{
+#sign-up:hover, #login-spotify-link:hover, #logout-spotify-link:hover {
   cursor: pointer;
   color: rgb(148,183,171);
 }
 
+/*#loading-title{
+  font: open;
+}*/
+
 p {
-  padding: 15px 0;
+  padding: 15px;
   font-size: 1.25rem;
+}
+
+p.spotify {
+  color: rgb(255,198,175);
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 1px solid rgba(255,198,175,0.5);
+  border-radius: 0.5rem;
+  /*background-color: rgba(255,255,204,0.2);*/
 }
 
 div#modal-body{
