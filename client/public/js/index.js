@@ -19,6 +19,8 @@ function loginHandler(){
       },
       success: function(data) {
         //console.log(data);
+        var $loading = $('#loading');
+        $loading.toggleClass('hidden');
 
         Cookies.set('jwt_token', data.token);
         Cookies.set('current_user', data.user);

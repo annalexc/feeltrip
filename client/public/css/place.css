@@ -30,15 +30,19 @@ nav#main-menu {
   position: fixed;
   top: 3.5%;
   right: -208px;
-    -webkit-transition: all 0.5s ease;
-   -moz-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-     -o-transition: all 0.5s ease;
-        transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .ui.container {
   width: 90% !important;
+}
+
+ul#playlists{
+  padding: 0;
 }
 
 .ui.left.aligned.vertical.segment{
@@ -90,18 +94,26 @@ nav#sub-nav span{
   font: 1.1rem 'Open Sans Condensed';
 }
 
+li {
+  list-style-type: none;
+}
+
 .snapshot-title {
   font: 1rem 'Open Sans Condensed';
   font-style: italic;
 }
 
-.snapshot, .weather-wrapper {
+.snapshot, .weather-wrapper, .spotify-wrapper {
   /*background-color: rgba(130,208,181,0.2);*/
   position: relative;
   background-color: rgba(255,255,255,0.2);
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 0.5em;
+}
+
+.spotify-wrapper{
+  padding: 1px 20px;
 }
 
 i.circular.dark-mint.remove.icon{
@@ -186,10 +198,10 @@ i.circular.dark-gray.icon {
   width: 45px;
   margin-right: 45px;
   -webkit-transition: all 0.5s ease;
-   -moz-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-     -o-transition: all 0.5s ease;
-        transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 #hamburger-button:hover {
@@ -203,10 +215,10 @@ i.circular.dark-gray.icon {
   background-color: rgba(104,166,144,1);
   display: block;
   -webkit-transition: all 0.5s ease;
-   -moz-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-     -o-transition: all 0.5s ease;
-        transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 #hamburger-button.open {
@@ -216,31 +228,35 @@ i.circular.dark-gray.icon {
 
 #hamburger-button.open span:nth-child(1) {
   -webkit-transform: translateY(11px) rotate(45deg);
-     -moz-transform: translateY(11px) rotate(45deg);
-      -ms-transform: translateY(11px) rotate(45deg);
-       -o-transform: translateY(11px) rotate(45deg);
-          transform: translateY(11px) rotate(45deg);
+  -moz-transform: translateY(11px) rotate(45deg);
+  -ms-transform: translateY(11px) rotate(45deg);
+  -o-transform: translateY(11px) rotate(45deg);
+  transform: translateY(11px) rotate(45deg);
   background-color: rgba(255,255,255,0.7); 
 }
 
 #hamburger-button.open span:nth-child(2) {
   -webkit-transform: rotateY(90deg);
-     -moz-transform: rotateY(90deg);
-      -ms-transform: rotateY(90deg);
-       -o-transform: rotateY(90deg);
-          transform: rotateY(90deg);
+  -moz-transform: rotateY(90deg);
+  -ms-transform: rotateY(90deg);
+  -o-transform: rotateY(90deg);
+  transform: rotateY(90deg);
 }
 
 #hamburger-button.open span:nth-child(3) {
   -webkit-transform: translateY(-9px) rotate(-45deg);
-     -moz-transform: translateY(-9px) rotate(-45deg);
-      -ms-transform: translateY(-9px) rotate(-45deg);
-       -o-transform: translateY(-9px) rotate(-45deg);
-          transform: translateY(-9px) rotate(-45deg);
+  -moz-transform: translateY(-9px) rotate(-45deg);
+  -ms-transform: translateY(-9px) rotate(-45deg);
+  -o-transform: translateY(-9px) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg);
   background-color: rgba(255,255,255,0.7);          
 }
 
-
+iframe {
+  position: relative;
+  height: 300px;
+  margin-bottom: 20px;
+}
 
 
 

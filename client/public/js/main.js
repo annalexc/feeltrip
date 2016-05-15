@@ -11,7 +11,7 @@ $(function(){
     } else {
     fadeIn();
     }
-  },100);
+  },150);
 
 });
 
@@ -41,7 +41,7 @@ function fadeIn(){
   while( !($(places[i]).hasClass('hidden')) ){
     i = Math.floor(Math.random()*(places.length));
   };
-  $(places[i]).fadeIn(700, function(){
+  $(places[i]).fadeIn(800, function(){
     $(places[i]).removeClass('hidden')
   }).css({
     'display' : '-webkit-flex',
