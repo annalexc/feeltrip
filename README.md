@@ -1,7 +1,7 @@
 #FeelTrip
 **Developers**: Anna Concepion, Kasia DelPercio, Matthew Jelling
 
-- http://feeltrip.herokuapp.com/
+**Get your feels [here](http://feeltrip.herokuapp.com/).**
 
 FeelTrip is a real time content aggregator that enables users to stay connected to places beyond where they currently live. Unlike SnapChat, Twitter, Facebook, FeelTrip immerses users in the current mood of a given place, helping them either discover something new or reminisce in the now.
 
