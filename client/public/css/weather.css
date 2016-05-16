@@ -21,13 +21,23 @@ h3 {
   margin: 0 auto;
 }
 
+
+
+#temperature {
+  margin-top: -30px;
+}
+
 #weather-icon {
   font-size: 5em;
   margin: 0 auto;
-  padding: 0;
+  padding: 20px 0;
   color: rgb(130,208,181);
 }
 
 #temperature {
   font-size: 1.5em;
+}
+
+#description {
+ /* margin-top: 15px;*/
 }

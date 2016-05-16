@@ -11,7 +11,9 @@ function loginHandler(){
 
   $login.on('click', function(){
     var $loading = $('#loading');
-        $loading.toggleClass('hidden');
+        $loading.fadeIn(500, function(){
+          $(this).toggleClass('hidden');
+        });
 
     $.ajax({
       method: 'post',
