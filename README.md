@@ -1,44 +1,17 @@
-**"FEELTRIP"**
+#FeelTrip
+**Developers**: Anna Concepion, Kasia DelPercio, Matthew Jelling
 
-"Window to the world"
-
-What are they tweeting about?
-
-Curious?
-
-Let's find out.
-
-Let's go on a feeltrip:  
-
-http://feeltrip.herokuapp.com/
-
-(hosted on heroku)
-
- 
-**ABOUT**:
-
-Do you ever wonder what people from other countries find interesting? Well, here is your chance to be up to date with the hottest, most trendy topics being sent ('tweeted') over twitter in 9 very different cities around the world. "FEELTRIP" offers you the possibility to feel the zeitgeist from a number of diverse locations. It is a constantly changing pool of tweets and trends. If you want to save the ones you like, just press the save button and they will be waiting for your next visit. Popular tweets also have links to ongoing discussion pages if you would like to know more about the subject.
-
-
-**SUMMARY**:
+- http://feeltrip.herokuapp.com/
 
 FeelTrip is a real time content aggregator that enables users to stay connected to places beyond where they currently live. Unlike SnapChat, Twitter, Facebook, FeelTrip immerses users in the current mood of a given place, helping them either discover something new or reminisce in the now.
-At FeelTrip we believe that everyone is a global citizen. We also recognize that what being a global citizen means to people is both personal and authentic. That is why ­ by launching FeelTrip ­ we aim to provide an unmanufactured, unedited experience of what it feels like to be in places we are not at for the moment.
 
 
-**TECHNOLOGY**:
+###Tehnical Overview & Approach
 
-The site is based on the node.js, express and MongoDB stack with a JavaScript front end. It uses authentication: jwt passport for the client side browser and for the server side it uses OAUTH 2.0. The site is based on the twitter api in the back-end - it pulls data from the openweathermap api (http://openweathermap.org/) and timezonedb api (https://timezonedb.com/) via AJAX calls in the front-end.
-
-
-**GENERAL APPROACH**:
-
-This was a group project executed by 3 WDI developers (General Assembly in New York - bootcamp students - Anna, Kasia and Matt) in cooperation with a group of Project Managers (PMI students: Julie, Matt and Judd). The concept and software development took 1 week of hard work. Communication and cooperation was smooth and inspirational.
-
-The biggest challenge in development was to generate the desired content from the twitter api. It was a great challenge as well as a valuable experience.
+This application was built by 3 GA WDI students (in cooperation with Product Management Intensive students - and superstars - Julie Polizzotto, Judd Grutman, & Matthew Gibson) on a Node.js / Express / MongoDB stack + Semantic UI Front-end framework. For authentication, a JWT/Passport.js strategy is used, in addition to OAuth 1.0. The third party APIs we elected to use for this project were: Twitter, OpenWeather and Spotify. 
 
 
-**USER STORIES**:
+###User Stories
 
 - As a user, I want to be able to easily see all of the locations in one place so that I can make an informed decision about where I want to explore.
 
@@ -61,7 +34,7 @@ The biggest challenge in development was to generate the desired content from th
 - As a user, I want a universal menu to be able to access from any page that can direct me where I want to go next.
 
 
-**WIREFRAMES**:
+###Wireframes & Screenshots
 
 - Wireframe:
 ![wireframe](client/public/images/feeltrip-wireframe1.png)
