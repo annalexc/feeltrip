@@ -31,7 +31,7 @@ function loginHandler(){
         userId = Cookies.getJSON('current_user')._id;
         if (Cookies.getJSON('jwt_token')){
           console.log("What up", user);
-          window.location.href = 'main'; 
+          window.location.href = 'http://feeltrip.herokuapp.com/main';
         }
         //This is what sets us up as being logged in
       },
