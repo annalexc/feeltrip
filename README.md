@@ -1,12 +1,12 @@
 #FeelTrip
-**Developers**: Anna Concepion, Kasia DelPercio, Matthew Jelling
+**Developers**: Anna Concepion, Kasia Bartos DelPercio, Matthew Jelling
 
 **Get your feels [here](http://feeltrip.herokuapp.com/).**
 
 FeelTrip is a real time content aggregator that enables users to stay connected to places beyond where they currently live. Unlike SnapChat, Twitter, Facebook, FeelTrip immerses users in the current mood of a given place, helping them either discover something new or reminisce in the now.
 
 
-###Tehnical Overview & Approach
+###Technical Overview & Approach
 
 This application was built by 3 GA WDI students (in cooperation with Product Management Intensive students - and superstars - Julie Polizzotto, Judd Grutman, & Matthew Gibson) on a Node.js / Express / MongoDB stack + Semantic UI Front-end framework. For authentication, a JWT/Passport.js strategy is used, in addition to OAuth 1.0. The third party APIs we elected to use for this project were: Twitter, OpenWeather and Spotify. 
 
