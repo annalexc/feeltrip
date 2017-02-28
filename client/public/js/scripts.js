@@ -22,6 +22,7 @@ function logoutHandler(){
   $logout.on('click', function(){
     Cookies.remove('jwt_token');
     Cookies.remove('current_user');
+    Cookies.remove('spotify_token');
     redirectToLoginHandler();
   });
 };

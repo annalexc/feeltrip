@@ -1,6 +1,6 @@
-// 
+//
 $(function(){
-  setSaveSnapShotHandler();  
+  setSaveSnapShotHandler();
 });
 
 
@@ -16,7 +16,7 @@ function setSaveSnapShotHandler(){
       var $postedAt = $($tweetsRefreshed[i]).find('.posted-at').text();
       var $tweetObject = { text: $tweetText, screen_name: $screenName, posted_at: $postedAt };
       tweet_data.push($tweetObject);
-      
+
     };
 
     var weather_data = [];
@@ -36,8 +36,8 @@ function setSaveSnapShotHandler(){
       weather_data: weather_data,
       location: $location
     };
-    console.log(snapShotData);
-    //saveSnapShot(snapShotData, $location);
+    // console.log(snapShotData);
+    saveSnapShot(snapShotData, $location);
   });
 };
 
@@ -48,8 +48,9 @@ function saveSnapShot(snapShotData, location){
     url: '/api/snapshots',
     data: { snapshot: snapShotData },
     success: function(data){
+      console.log("I get here");
       console.log(data);
-      window.location.href = location; 
+      window.location.href = location;
     }
   });
 };

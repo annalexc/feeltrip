@@ -21,13 +21,45 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-position: center;
   overflow: auto;
 }
 
-nav {
+nav#main-menu {
+  font-size: 1.35rem;
   position: fixed;
-  top: 3%;
-  right: 3%;
+  top: 3.5%;
+  right: -208px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.ui.container {
+  width: 85% !important;
+}
+
+ul#playlists{
+  padding: 0;
+}
+
+.ui.left.aligned.vertical.segment{
+  padding-top: 0;
+}
+nav#main-menu.open {
+  right: 3.5%;
+}
+
+nav#sub-nav {
+  position: fixed;
+  top: 11%;
+  right: 4%;
+}
+
+nav#sub-nav span{
+  font: 1.2rem 'Open Sans Condensed';
 }
 
 .mint {
@@ -46,9 +78,52 @@ nav {
   line-height: 1;
   margin-bottom: 10px;
 }
-#place{
-  font: 3rem 'Playfair Display';
-  margin-top: 20px;
+
+.snapshot-title{
+  margin-top: 0;
+}
+
+
+#place {
+  font: 3.25rem 'Playfair Display';
+  margin: 20px auto 0;
+  line-height: 1.1;
+}
+
+#subtitle {
+  font: 1.1rem 'Open Sans Condensed';
+}
+
+li {
+  list-style-type: none;
+}
+
+.snapshot-title {
+  font: 1rem 'Open Sans Condensed';
+  font-style: italic;
+}
+
+.snapshot, .weather-wrapper, .spotify-wrapper {
+  /*background-color: rgba(130,208,181,0.2);*/
+  position: relative;
+  background-color: rgba(255,255,255,0.2);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 0.5em;
+}
+
+.spotify-wrapper{
+  padding: 1px 20px;
+}
+
+i.circular.dark-mint.remove.icon{
+  position: absolute;
+  right: 2%;
+  margin-top: -10px;
+}
+
+.message {
+  font: 1rem 'Playfair Display';
 }
 a {
   color: white;
@@ -67,6 +142,10 @@ a.hashtag:hover, a.screen-name:hover {
 
 #tweets-refresh {
   font: 1rem 'Lora';
+}
+
+#saved-trends {
+  padding-top: 0;
 }
 
 .tweet {
@@ -88,29 +167,111 @@ p.info {
   padding: 5px 0 15px;
 }
 
-a.screen-name {
+a.name {
   font-size: 0.85rem;
 }
 
 i.circular.dark-mint.icon {
   background-color: rgb(130,208,181) !important;
   color: black;
+  margin: 0 auto;
 }
 i.circular.dark-mint.icon:hover {
   cursor: pointer;
   background-color: rgb(104,166,144) !important;
+
+}
+
+i.circular.dark-gray.icon {
+  background-color: rgb(255,255,255) !important;
+  margin: 0 auto;
 }
 
 .hidden {
   display: none !important;
 }
 
+#hamburger-button {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  width: 45px;
+  margin-right: 45px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#hamburger-button:hover {
+  cursor: pointer;
+}
+
+#hamburger-button > span {
+  margin-bottom: 5px;
+  height: 5px;
+  width: 35px;
+  background-color: rgba(104,166,144,1);
+  display: block;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#hamburger-button.open {
+  margin-right: -3px;
+}
+
+
+#hamburger-button.open span:nth-child(1) {
+  -webkit-transform: translateY(11px) rotate(45deg);
+  -moz-transform: translateY(11px) rotate(45deg);
+  -ms-transform: translateY(11px) rotate(45deg);
+  -o-transform: translateY(11px) rotate(45deg);
+  transform: translateY(11px) rotate(45deg);
+  background-color: rgba(255,255,255,0.7); 
+}
+
+#hamburger-button.open span:nth-child(2) {
+  -webkit-transform: rotateY(90deg);
+  -moz-transform: rotateY(90deg);
+  -ms-transform: rotateY(90deg);
+  -o-transform: rotateY(90deg);
+  transform: rotateY(90deg);
+}
+
+#hamburger-button.open span:nth-child(3) {
+  -webkit-transform: translateY(-9px) rotate(-45deg);
+  -moz-transform: translateY(-9px) rotate(-45deg);
+  -ms-transform: translateY(-9px) rotate(-45deg);
+  -o-transform: translateY(-9px) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg);
+  background-color: rgba(255,255,255,0.7);          
+}
+
+iframe {
+  position: relative;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+
 
 @media all and (max-width:630px) {
   i.circular.dark-mint.icon {
   margin: 2px;
-}
-  nav{
+  }
+  nav {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
   }
+  nav#sub-nav {
+  position: fixed;
+  top: 0%;
+  right: 4%;
+  }
+}

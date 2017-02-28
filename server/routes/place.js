@@ -68,6 +68,11 @@ router.get('/place/:name', function(req, res, next) {
         placeId = '5a110d312052166f';
         break;
       }
+      case "singapore": {
+        woeId = 1062617;
+        placeId = '2509b9adc1fedfd2';
+        break;
+      }
     }
   
     getAllTrendsPlace(woeId,res, placeId, name);
@@ -75,7 +80,8 @@ router.get('/place/:name', function(req, res, next) {
   } else {
     var trends = [];
     var tweets = [];
-    res.render('place', {trends: trends, name: name, tweets: tweets});
+    var subtitle = "Saved Snapshots View"
+    res.render('place', {trends: trends, name: name, tweets: tweets, subtitle: subtitle});
   }
 
 });
@@ -94,7 +100,9 @@ function getAllTrendsPlace(woeId, res, placeId, name){
     } else {
 
       var localTrends = [];
+      
       localTrends = parseTrends(localTweets, localResponse, localTrends);
+      var trendsAsOf = localTrends[0].as_of;
 
       client.get('trends/place', globalParams, function(globalErr, globalTweets, globalResponse){ 
         if(globalErr){
@@ -108,11 +116,13 @@ function getAllTrendsPlace(woeId, res, placeId, name){
           var limitedTrends = [];
           limitedTrends = createLimitedTrendsArray(globalTrends,localTrends);
 
+          
           var hashtagTrends = [];
-          hashtagTrends = getHashtagTrends(limitedTrends);
+          getHashtagTrends(limitedTrends,hashtagTrends);
+          // console.log(hashtagTrends);
 
           var truncatedTweets = [];
-          getTweets(hashtagTrends, placeId, truncatedTweets, hashtagTrends, res, name);
+          setTimeout(getTweets(hashtagTrends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, res, name), 500);
           // console.log(truncatedTweets);
 
           // ******************************************************** //
@@ -174,6 +184,7 @@ function createLimitedTrendsArray(globalTrends, localTrends){
   };
 
   limitTrends(localTrendsArray, limitedTrends, globalTrendsArray);
+  //console.log(185,limitedTrends);
   return limitedTrends;
 };
 
@@ -190,43 +201,52 @@ function limitTrends(localTrends,limitedTrends,globalTrends){
   };
 };
 
-function getHashtagTrends(trends){
-  var hashtagTrends = [];
+function getHashtagTrends(trends, hashtagTrends){
   var i = 0;
-  count = 0;
+  var count = 0;
   // Limit to 10 local trends
-  while((count<10)){
+  while((count<15)){
+    //console.log(211,i);
     // Check if trend has a hashtag
     var trend = trends[i];
+
+    if(!trend){
+      break;
+    }
+
     if(trend.indexOf('#') != -1){
       hashtagTrends.push(trend);
       count++;
     };
     i++;
   };
-  return hashtagTrends;
 };
 
 
-function getTweets(trends, placeId, truncatedTweets, hashtagTrends, res, name){
+function getTweets(trends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, res, name){
+  var datetime = getCurrentDateTime();
+
   //LIMIT TWEETS TO JUST THE FIRST FIVE TRENDS
     queryParams = {
       q : 'place:'+placeId+trends.join(' OR '),
-      count: 15,
+      count: 20,
+      lang: 'en',
       result_type : 'mixed'
     }
+
+
 
     client.get('search/tweets', queryParams, function(error, tweets, response){
       if(error){
         console.log('Err: ', error);
       } else {
         truncatedTweets = produceLocalTweets(tweets,truncatedTweets);
-        res.render('place', {trends: hashtagTrends, name: name, tweets: truncatedTweets});
+        res.render('place', {trends: hashtagTrends, name: name, tweets: truncatedTweets, subtitle: datetime });
         // console.log("I get here!");
       };
 
     });
-  console.log(queryParams);
+  //console.log(queryParams);
 };
 
 
@@ -246,6 +266,23 @@ function produceLocalTweets(tweetsByHash,truncatedTweets){
   // console.log(truncatedTweets);
   return truncatedTweets;
 };
+
+function getCurrentDateTime() {
+  var date = new Date();
+  var d = date.toDateString();
+  var hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+  var am_pm = date.getHours() >= 12 ? "PM" : "AM";
+  
+  if (hours == 0) { hours = 12; }
+  hours = hours < 10 ? "0" + hours : hours;
+  // hours = ((hours + 11) % 12 + 1);
+  var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+  time = hours + ":" + minutes + " " + am_pm;
+  var datetime = "Data Refreshed: " + d + "  " + time;  
+  //console.log(datetime);
+  return datetime;
+
+    };
 
 
 

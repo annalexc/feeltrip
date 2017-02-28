@@ -13,94 +13,106 @@
   <script src="/js/scripts.js" charset="utf-8"></script>
   <script src="/js/place-setview.js" charset="utf-8"></script>
   <script src="/js/place-setdata.js" charset="utf-8"></script>
+  <script src="/js/render-db-data.js"></script>
+  <script src="/js/spotify-place.js"></script>
   <title>FeelTrip</title>
 </head>
 <body>
 
 <div class="page-wrapper">
   <h1 id="place"><%= name.toUpperCase().replace('-', ' '); %></h1>
+  <p id="subtitle" class="dark-mint"><%= subtitle %></p>
   <div class="ui container">
   <div class="ui stackable grid">
 
     <div class="twitter-container ten wide column">
 
       <!-- Twitter Trends Section -->
-      <div class="section-header">Trending</div>
 
-        <!-- Tweets pulled from Twitter -->
+
+      <!-- Tweets pulled from Twitter -->
       <div class="hidden" id="tweets-refreshed">
+
         <div class="ui left aligned vertical segment">
+          <div class="section-header">Current Trends</div>
           <% tweets.forEach(function(tweet, index){ %>
           <div class="tweet">
             <p class="tweet-text"><%= tweet.text; %></p>
             <p class="info">-<span class="screen-name">@<%= tweet.screen_name; %></span><span>, </span><span class="posted-at"><%= tweet.posted_at %></span></p>
           </div>
           <% }); %>
-      
         </div>
       </div>
 
         <!-- Tweets rendered from database -->
-        <div class="ui left aligned vertical segment" id="tweets-saved">
-          <div class="tweet">
-            <p class="tweet-text">Lorem #ipsum dolor sit amet, consectetur #adipisicing elit, sed do #eiusmod
-            #tempor incididunt #ut labore et dolore magna aliqua.
-            <p class="info">-<span class="screen-name">@thisisascreenname</span><span>, </span><span class="posted-at">Date here</span></p>
-          </div>
-          <div class="tweet">
-            <p class="tweet-text">Lorem #ipsum dolor sit amet, consectetur #adipisicing elit, sed do #eiusmod
-            #tempor incididunt #ut labore et dolore magna aliqua.
-            <p class="info">-<span class="screen-name">@thisisascreenname</span><span>, </span><span class="posted-at">Date here</span></p>
-          </div>
-          <div class="tweet">
-            <p class="tweet-text">Lorem #ipsum dolor sit amet, consectetur #adipisicing elit, sed do #eiusmod
-            #tempor incididunt #ut labore et dolore magna aliqua.
-            <p class="info">-<span class="screen-name">@thisisascreenname</span><span>, </span><span class="posted-at">Date here</span></p>
-          </div>
+
+      <div class="ui left aligned vertical segment" id="saved-trends">
+        <div class="section-header">Saved Trends</div>
+        <div id="tweets-saved">
         </div>
+      </div>
+
+
 
 
     </div>
 
     <!-- Weather Section -->
 
-    <div class="weather-container six wide column">
-      <span class="section-header">Weather</span>
+   <div class="weather-container six wide column">
+     <div class="section-header">Weather</div>
 
-      <div class="weather-wrapper">
-        <br>
-        <!-- <search>
-          <form>
-            <input class="searchbar" id="search" placeholder="search another city?">
-            <input class="button" id="searchbutton" type="submit" value="search">
-          </form>
-        </search> -->
+     <div class="weather-wrapper">
+       <br>
 
-        <div id="weather-panel">
-          <h2 id="city"></h2>
-          <hr>
-          <h3 id="description"></h3>
-          <h3 id="temperature"></h3>
-          <h2 id="weather-icon"></h2>
-          <h3 id="humidity"></h3>
-          <h3 id="wind"></h3>
+       <div id="weather-panel">
+         <!-- <h2 id="city"></h2> -->
+         <h3 id="temperature"></h3>
+         <h2 id="weather-icon" class="dark-mint"></h2>
+         <p id="description"></p>
+         <p id="humidity"></p>
+         <p id="wind"></p>
+         <p id="localtime"></p>
+         <p id="sunRiseSet"></p>
+       </div>
+    </div>  <!-- end of wrapper-->
+
+    <div class="spotify-container">
+      <div class="section-header">Playlists</div>
+      <div class="spotify-wrapper">
+        
+        <div class="playlist-container">
+          <ul id="playlists"></ul>
         </div>
-      </div>  <!-- end of wrapper-->
-    </div> <!--end of weather-container-->
-  
+      </div>
+    </div>
+
+
+   </div> <!--end of weather-container-->
+
   </div> <!-- End of stackable grid -->
 
-  <hr>
-  <p>
-    <a href="/main">View All Places</a>
-  </p>
 
   <!-- Navigation -->
-  <nav>
-    <a href='/place/<%=name%>?refresh=true' id="refresh"><i class="circular dark-mint large refresh icon"></i></a>
-    <i class="circular dark-mint large save icon" id="save"></i>
-    <i class="circular dark-mint large sign out icon logout"></i>
-
+  <nav id="main-menu">
+    <div id="hamburger-button" class="slide">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+     <div id="hamburger-button" class="drop hidden">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <a href='/main' id="home"><i class="circular dark-mint home icon"></i></a>
+    <a href='/place/<%=name%>?refresh=true' id="refresh"><i class="circular dark-mint refresh icon"></i></a>
+    <i class="circular dark-gray disabled save icon" id="disabled-save"></i>
+    <i class="circular dark-mint save icon hidden" id="save"></i>
+    <i class="circular dark-mint sign out icon logout"></i>
+  </nav>
+  <nav id="sub-nav">
+    <span id="nav-desc"></span>
   </nav>
 
   </div>

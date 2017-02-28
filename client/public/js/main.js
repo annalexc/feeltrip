@@ -2,6 +2,8 @@
 
 $(function(){
   console.log("I've landed!");
+  setPlaceBackground();
+  setPlaceBackgroundFade();
   
   var fade = setInterval(function(){
     if (($('.hidden').length) === 0){
@@ -9,9 +11,29 @@ $(function(){
     } else {
     fadeIn();
     }
-  },100);
+  },150);
 
 });
+
+function setPlaceBackground(){
+  var places = $('.menu-box ');
+  for(var i = 0; i < places.length; i++){
+    var img = $(places[i]).find('span').text();
+    img = img.toLowerCase().replace(' ', '-');
+    console.log(img);
+    $(places[i]).find('.bg').attr('style', 'background:url(/images/' + img +'-small.jpg);background-size:cover');
+  };
+};
+
+
+function setPlaceBackgroundFade(){
+  $(".menu-box").hover(function() {
+    $(this).find('.bg').fadeIn();
+  }, function() {
+    $(this).find('.bg').fadeOut();
+  });
+};
+
 
 function fadeIn(){
   var places = $('.place');
@@ -19,7 +41,7 @@ function fadeIn(){
   while( !($(places[i]).hasClass('hidden')) ){
     i = Math.floor(Math.random()*(places.length));
   };
-  $(places[i]).fadeIn(700, function(){
+  $(places[i]).fadeIn(800, function(){
     $(places[i]).removeClass('hidden')
   }).css({
     'display' : '-webkit-flex',

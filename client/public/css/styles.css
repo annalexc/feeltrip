@@ -51,17 +51,18 @@ a {
 .link {
   text-decoration: none;
   position: relative;
+  z-index: 1000;
 }
 
-.link-hover {
+.linkover {
   text-transform: uppercase;
   font-weight: 400;
   color: black;
   padding: 0 0 4px;
 }
 
-.link-hover::before,
-.link-hover::after {
+.linkover::before,
+.linkover::after {
   content: '';
   width: 100%;
   height: 3px;
@@ -74,70 +75,79 @@ a {
   -webkit-transform: scale3d(0,1,1);
 }
 
-.link-hover::before {
+.linkover::before {
   right: 0;
   top: 0;
   transform-origin: 100% 50%;
   -webkit-transform-origin: 100% 50%;
 }
 
-.link-hover::after {
+.linkover::after {
   left: 0;
   bottom: 0;
   -webkit-transform-origin: 0 50%;
   transform-origin: 0 50%;
 }
 
-.link-hover:hover::before,
-.link-hover:hover::after {
+.place:hover .linkover::before,
+.place:hover .linkover::after {
   -webkit-transform: scale3d(1,1,1);
   transform: scale3d(1,1,1);
 }
 
-.link-hover span {
+.linkover span {
   position: relative;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
 }
 
-.link-hover:hover span {
+.place:hover .linkover span {
   color: transparent;
 }
 
-.link-hover span::before,
-.link-hover span::after {
+.linkover span::before,
+.linkover span::after {
   position: absolute;
   color: rgb(130,208,181);
-  text-shadow: -1px 1px 1px rgba(0,0,0,0.65);
+  text-shadow: -1px 1px 1px rgba(0,0,0,0.8);
   opacity: 0;
   -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
   transition: transform 0.5s, opacity 0.5s;
 }
 
-.link-hover span::before {
+.linkover span::before {
   content: attr(data-letters-l);
   left: 0;
   -webkit-transform: translate3d(-5px,0,0);
   transform: translate3d(-5px,0,0);
 }
 
-.link-hover span::after {
+.linkover span::after {
   content: attr(data-letters-r);
   right: 0;
   -webkit-transform: translate3d(5px,0,0);
   transform: translate3d(5px,0,0);
 }
 
-.link-hover:hover span::before,
-.link-hover:hover span::after {
+.place:hover .linkover span::before,
+.place:hover .linkover span::after {
   opacity: 1;
   -webkit-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0);
 }
 
 
+@media screen and (max-width: 60em) {
+  .menu-box {
+    font-size: 2.85rem;
+  }
+}
+
 @media screen and (max-width: 41.6em) {
   .menu-box {
     width: 100%;
+    height: 20%;
+    font-size: 2.75rem;
   }
+}
 
