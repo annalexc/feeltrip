@@ -12,9 +12,9 @@ function isLoggedInToFeelTrip(){
 };
 
 function redirectToLoginHandler(){
-  // if(!isLoggedInToFeelTrip()){
-  //   window.location.href = '/'; 
-  // };
+  if(!isLoggedInToFeelTrip()){
+    window.location.href = '/'; 
+  };
 };
 
 function logoutHandler(){
