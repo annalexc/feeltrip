@@ -224,7 +224,7 @@ var renderSnapshots = function(snapshotData, callback1, callback2, callback3){
 
   if($('.snapshot').length === 0){
     var $message = $('<div>').addClass('message');
-      $message.html('No tweets saved. Refresh data to get current trends.');
+      $message.html('No tweets saved. Refresh data from flyout menu to get current trends.');
       $tweetsSaved.append($message);
   };
 
