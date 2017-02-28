@@ -36,7 +36,7 @@ function loginHandler(){
         //This is what sets us up as being logged in
       },
       error: function(data){
-        $loading.toggleClass('hidden');
+        $loading.toggleClass('hidden').css('display','none');
         var $message = $('#message');
         $message.text('Invalid login credentials. Please try again.').addClass('pink');   
       }

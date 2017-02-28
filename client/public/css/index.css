@@ -217,10 +217,14 @@ input[type='text']:focus, input[type='password']:focus{
 }
 
 
-@media all and (max-width:630px) {
+@media all and (max-width:767px) {
 
   .page-wrapper{
     background-color: transparent;
+  }
+  .video-container {
+    background-image: url('https://s3.amazonaws.com/coverr-public/poster/NYC-Traffic.jpg');
+    background-size: cover;
   }
   .video-container video {
     display: none;
