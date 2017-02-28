@@ -122,7 +122,7 @@ function getAllTrendsPlace(woeId, res, placeId, name){
           // console.log(hashtagTrends);
 
           var truncatedTweets = [];
-          setTimeout(getTweets(hashtagTrends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, res, name), 500);
+          setTimeout(function(){getTweets(hashtagTrends, trendsAsOf, placeId, truncatedTweets, hashtagTrends, res, name);}, 500);
           // console.log(truncatedTweets);
 
           // ******************************************************** //
